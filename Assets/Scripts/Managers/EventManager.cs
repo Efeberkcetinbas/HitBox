@@ -10,6 +10,13 @@ public enum GameEvent
     OnTargetHit,
     OnUpdateUI,
 
+
+    //Directions
+    OnUp,
+    OnDown,
+    OnLeft,
+    OnRight,
+
     //Buffs
     OnSpeedUp
 
