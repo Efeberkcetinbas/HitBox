@@ -13,10 +13,25 @@ public class PlayerControl : MonoBehaviour
     //public Animator animator;
 
     public PlayerData playerData;
+    public CentralData centralData;
+
+    [SerializeField] private Transform leftPunch,RightPunch;
+    [SerializeField] private Transform up,down,left,right;
+
+    private void OnEnable() 
+    {
+        EventManager.AddHandler(GameEvent.OnResetAll,RestartDirection);    
+    }
+
+    private void OnDisable() 
+    {
+        EventManager.RemoveHandler(GameEvent.OnResetAll,RestartDirection);
+    }
+
+
     void Update()
     {
         CheckMove();
-
     }
 
     private void CheckMove()
@@ -45,11 +60,15 @@ public class PlayerControl : MonoBehaviour
                     if(lastPosition.x>firstPosition.x)
                     {
                         //animator.SetBool("Jump",true);
-                        Debug.Log("Right");
+                        RightDirection();
+                        playerData.playerCanMove=false;
+                        EventManager.Broadcast(GameEvent.OnPlayerRight);
                     }
                     else
                     {
-                        Debug.Log("Left");
+                        LeftDirection();
+                        playerData.playerCanMove=false;
+                        EventManager.Broadcast(GameEvent.OnPlayerLeft);
                         //animator.SetBool("Jump",true);
                     }
                 }
@@ -58,12 +77,16 @@ public class PlayerControl : MonoBehaviour
                 {
                     if(lastPosition.y>firstPosition.y)
                     {
-                        Debug.Log("Up");
+                        UpDirection();
+                        playerData.playerCanMove=false;
+                        EventManager.Broadcast(GameEvent.OnPlayerUp);
                         //animator.SetBool("Jump",true);
                     }
                     else
                     {
-                        Debug.Log("Down");
+                        DownDirection();
+                        playerData.playerCanMove=false;
+                        EventManager.Broadcast(GameEvent.OnPlayerDown);
                         //animator.SetBool("Jump",true);
 
                     }
@@ -79,6 +102,52 @@ public class PlayerControl : MonoBehaviour
         //animator.SetBool("Jump",false);
         yield return new WaitForSeconds(.1f);
     }
+
+    #region DirectionsMove
+
+    private void UpDirection()
+    {
+        leftPunch.DOLocalMove(up.transform.position,0.25f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.3f));
+        centralData.playerUpHit=true;
+        centralData.playerDownHit=false;
+        centralData.playerLeftHit=false;
+        centralData.playerRightHit=false;
+
+    }
+    private void DownDirection()
+    {
+        RightPunch.DOLocalMove(down.transform.position,0.25f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.3f));
+        centralData.playerUpHit=false;
+        centralData.playerDownHit=true;
+        centralData.playerLeftHit=false;
+        centralData.playerRightHit=false;
+    }
+    private void LeftDirection()
+    {
+        leftPunch.DOLocalMove(left.transform.position,0.25f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.3f));
+        centralData.playerUpHit=false;
+        centralData.playerDownHit=true;
+        centralData.playerLeftHit=true;
+        centralData.playerRightHit=false;
+    }
+    private void RightDirection()
+    {
+        RightPunch.DOLocalMove(right.transform.position,0.25f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.3f));
+        centralData.playerUpHit=false;
+        centralData.playerDownHit=false;
+        centralData.playerLeftHit=false;
+        centralData.playerRightHit=true;
+    }
+
+    private void RestartDirection()
+    {
+        centralData.playerUpHit=false;
+        centralData.playerDownHit=false;
+        centralData.playerLeftHit=false;
+        centralData.playerRightHit=false;
+    }
+
+    #endregion
 
     #region Move
     private void GoXAxis(float direction)

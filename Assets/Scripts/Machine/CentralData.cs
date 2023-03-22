@@ -8,4 +8,9 @@ public class CentralData : ScriptableObject
 
     //fake red ' te vuramayiz
     public bool canHit;
+
+    //order
+    public bool upHit,downHit,leftHit,rightHit;
+
+    public bool playerUpHit,playerDownHit,playerLeftHit,playerRightHit;
 }

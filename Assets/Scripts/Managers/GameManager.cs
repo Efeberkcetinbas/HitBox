@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     void OnIncreaseScore()
     {
         gameData.score += 50;
-        EventManager.Broadcast(GameEvent.OnUpdateUI);
+        Debug.Log(gameData.score);
+        //EventManager.Broadcast(GameEvent.OnUpdateUI);
     }
 
     void OnIncreaseGold()
@@ -39,5 +40,6 @@ public class GameManager : MonoBehaviour
     void ClearData(){
         gameData.coins = 0;
         gameData.score = 0;
+        playerData.playerCanMove=true;
     }
 }

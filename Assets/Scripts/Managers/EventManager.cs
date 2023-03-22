@@ -17,6 +17,14 @@ public enum GameEvent
     OnLeft,
     OnRight,
 
+    //Player Directions
+    OnPlayerUp,
+    OnPlayerDown,
+    OnPlayerLeft,
+    OnPlayerRight,
+
+    OnResetAll,
+
     //Buffs
     OnSpeedUp
 

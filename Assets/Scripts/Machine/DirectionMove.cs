@@ -9,6 +9,10 @@ public class DirectionMove : MonoBehaviour
     public Transform Down;
     public Transform Left;
     public Transform Right;
+
+
+
+    public CentralData centralData;
     private void OnEnable() 
     {
         EventManager.AddHandler(GameEvent.OnUp,UpMove);
@@ -28,20 +32,36 @@ public class DirectionMove : MonoBehaviour
     private void UpMove()
     {
         Debug.Log("Signal Moves Up");
+        centralData.upHit=true;
+        centralData.downHit=false;
+        centralData.rightHit=false;
+        centralData.leftHit=false;
     }
 
     private void DownMove()
     {
         Debug.Log("Signal Moves Down");
+        centralData.upHit=false;
+        centralData.downHit=true;
+        centralData.rightHit=false;
+        centralData.leftHit=false;
     }
 
     private void LeftMove()
     {
         Debug.Log("Signal Moves Left");
+        centralData.upHit=false;
+        centralData.downHit=false;
+        centralData.rightHit=false;
+        centralData.leftHit=true;
     }
 
     private void RightMove()
     {
         Debug.Log("Signal Moves Right");
+        centralData.upHit=false;
+        centralData.downHit=false;
+        centralData.rightHit=true;
+        centralData.leftHit=false;
     }
 }

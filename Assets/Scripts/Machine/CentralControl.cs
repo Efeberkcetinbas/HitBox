@@ -8,9 +8,21 @@ public class CentralControl : MonoBehaviour
 
     public List<Transform> Directions=new List<Transform>();
 
+
     private int index;
     private float time;
     
+
+    private void OnEnable() 
+    {
+        EventManager.AddHandler(GameEvent.OnResetAll,ResetCentral);
+    }
+
+    private void OnDisable() 
+    {
+        EventManager.RemoveHandler(GameEvent.OnResetAll,ResetCentral);
+    }
+
     void Start()
     {
         index=Random.Range(0,Directions.Count);
@@ -28,6 +40,13 @@ public class CentralControl : MonoBehaviour
             ActiveDirection();
             time=0;
         }
+    }
+
+    private void ResetCentral()
+    {
+        time=0;
+        ChangeIndex();
+        ActiveDirection();
     }
 
 
