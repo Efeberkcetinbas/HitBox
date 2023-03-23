@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         gameData.score += 50;
         Debug.Log(gameData.score);
-        //EventManager.Broadcast(GameEvent.OnUpdateUI);
+        EventManager.Broadcast(GameEvent.OnUpdateUI);
     }
 
     void OnIncreaseGold()

@@ -15,8 +15,9 @@ public class PlayerControl : MonoBehaviour
     public PlayerData playerData;
     public CentralData centralData;
 
+
     [SerializeField] private Transform leftPunch,RightPunch;
-    [SerializeField] private Transform up,down,left,right;
+    [SerializeField] private Transform up,down,left,right,central;
 
     private void OnEnable() 
     {
@@ -55,6 +56,8 @@ public class PlayerControl : MonoBehaviour
             {
                 lastPosition=touch.position;
 
+                
+
                 if(Mathf.Abs(lastPosition.x-firstPosition.x)>Mathf.Abs(lastPosition.y-firstPosition.y))
                 {
                     if(lastPosition.x>firstPosition.x)
@@ -88,8 +91,16 @@ public class PlayerControl : MonoBehaviour
                         playerData.playerCanMove=false;
                         EventManager.Broadcast(GameEvent.OnPlayerDown);
                         //animator.SetBool("Jump",true);
-
+                        // ??????????????
                     }
+                    if(lastPosition.x==firstPosition.x && lastPosition.y==firstPosition.y)
+                    {
+                        CentralDirection();
+                        playerData.playerCanMove=false;
+                        EventManager.Broadcast(GameEvent.OnPlayerCenter);
+                    }
+
+                    
                 }
 
 
@@ -112,31 +123,44 @@ public class PlayerControl : MonoBehaviour
         centralData.playerDownHit=false;
         centralData.playerLeftHit=false;
         centralData.playerRightHit=false;
+        centralData.playerCentralHit=false;
 
     }
     private void DownDirection()
     {
-        RightPunch.DOLocalMove(down.transform.position,0.25f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.3f));
+        RightPunch.DOLocalMove(down.transform.position,0.25f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-4.5f),0.3f));
         centralData.playerUpHit=false;
         centralData.playerDownHit=true;
         centralData.playerLeftHit=false;
         centralData.playerRightHit=false;
+        centralData.playerCentralHit=false;
     }
     private void LeftDirection()
     {
-        leftPunch.DOLocalMove(left.transform.position,0.25f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.3f));
+        leftPunch.DOLocalMove(left.transform.position,0.25f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-4.5f),0.3f));
         centralData.playerUpHit=false;
         centralData.playerDownHit=true;
         centralData.playerLeftHit=true;
         centralData.playerRightHit=false;
+        centralData.playerCentralHit=false;
     }
     private void RightDirection()
     {
-        RightPunch.DOLocalMove(right.transform.position,0.25f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.3f));
+        RightPunch.DOLocalMove(right.transform.position,0.25f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-4.5f),0.3f));
         centralData.playerUpHit=false;
         centralData.playerDownHit=false;
         centralData.playerLeftHit=false;
         centralData.playerRightHit=true;
+        centralData.playerCentralHit=false;
+    }
+    private void CentralDirection()
+    {
+        RightPunch.DOLocalMove(central.transform.position,0.25f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-4.5f),0.3f));
+        centralData.playerUpHit=false;
+        centralData.playerDownHit=false;
+        centralData.playerLeftHit=false;
+        centralData.playerRightHit=false;
+        centralData.playerCentralHit=true;
     }
 
     private void RestartDirection()
@@ -145,6 +169,7 @@ public class PlayerControl : MonoBehaviour
         centralData.playerDownHit=false;
         centralData.playerLeftHit=false;
         centralData.playerRightHit=false;
+        centralData.playerCentralHit=false;
     }
 
     #endregion
@@ -175,9 +200,9 @@ public class PlayerControl : MonoBehaviour
     #endregion
 
     #region  Rotate
-    private void RotateYAxis(float y)
+    private void RotateYAxis(Transform punch, float y)
     {
-
+        punch.DORotate(new Vector3(0,y,0),0.1f);
     }
 
     #endregion

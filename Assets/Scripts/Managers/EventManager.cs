@@ -16,12 +16,14 @@ public enum GameEvent
     OnDown,
     OnLeft,
     OnRight,
+    OnCenter,
 
     //Player Directions
     OnPlayerUp,
     OnPlayerDown,
     OnPlayerLeft,
     OnPlayerRight,
+    OnPlayerCenter,
 
     OnResetAll,
 

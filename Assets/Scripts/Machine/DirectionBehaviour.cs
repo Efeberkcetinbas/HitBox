@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DirectionBehaviour : MonoBehaviour
 {
-    [SerializeField] private Material White,Green;
+    [SerializeField] private Material Black,Green,Red;
 
     public List<Transform> directions=new List<Transform>();
     private void OnEnable() 
@@ -13,6 +13,7 @@ public class DirectionBehaviour : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnDown,ChangeDownMat);
         EventManager.AddHandler(GameEvent.OnLeft,ChangeLeftMat);
         EventManager.AddHandler(GameEvent.OnRight,ChangeRightMat);
+        EventManager.AddHandler(GameEvent.OnCenter,ChangeCentralMat);
         EventManager.AddHandler(GameEvent.OnResetAll,ResetMat);
     }
 
@@ -22,6 +23,7 @@ public class DirectionBehaviour : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnDown,ChangeDownMat);
         EventManager.RemoveHandler(GameEvent.OnLeft,ChangeLeftMat);
         EventManager.RemoveHandler(GameEvent.OnRight,ChangeRightMat);
+        EventManager.RemoveHandler(GameEvent.OnCenter,ChangeCentralMat);
         EventManager.RemoveHandler(GameEvent.OnResetAll,ResetMat);
     }
 
@@ -47,11 +49,17 @@ public class DirectionBehaviour : MonoBehaviour
         directions[3].GetComponent<MeshRenderer>().material=Green;
     }
 
+    private void ChangeCentralMat()
+    {
+        directions[4].GetComponent<MeshRenderer>().material=Green;
+    }
+
     private void ResetMat()
     {
         for (int i = 0; i < directions.Count; i++)
         {
-            directions[i].GetComponent<MeshRenderer>().material=White;
+            directions[i].GetComponent<MeshRenderer>().material=Black;
         }
     }
+
 }

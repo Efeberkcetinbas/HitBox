@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using DG.Tweening;
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI score,coin;
@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     void OnUIUpdate()
     {
         score.SetText(gameData.score.ToString());
-        coin.SetText("x" + gameData.coins.ToString());
+        score.transform.DOScale(new Vector3(1.5f,1.5f,1.5f),0.2f).OnComplete(()=>score.transform.DOScale(new Vector3(1,1f,1f),0.2f));
+        //coin.SetText("x" + gameData.coins.ToString());
     }
 }

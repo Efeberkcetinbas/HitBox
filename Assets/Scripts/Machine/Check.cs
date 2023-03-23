@@ -12,6 +12,7 @@ public class Check : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnPlayerDown,CheckingDown);
         EventManager.AddHandler(GameEvent.OnPlayerLeft,CheckingLeft);
         EventManager.AddHandler(GameEvent.OnPlayerRight,CheckingRight);
+        EventManager.AddHandler(GameEvent.OnPlayerCenter,CheckingCentral);
     }
 
     private void OnDisable() 
@@ -20,6 +21,7 @@ public class Check : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnPlayerDown,CheckingDown);
         EventManager.RemoveHandler(GameEvent.OnPlayerLeft,CheckingLeft);
         EventManager.RemoveHandler(GameEvent.OnPlayerRight,CheckingRight);
+        EventManager.RemoveHandler(GameEvent.OnPlayerCenter,CheckingCentral);
     }
 
     private void CheckingUp()
@@ -56,6 +58,16 @@ public class Check : MonoBehaviour
     private void CheckingRight()
     {
         if(centralData.rightHit && centralData.playerRightHit)
+            EventManager.Broadcast(GameEvent.OnIncreaseScore);
+        else
+            Debug.Log("FAILLLL");
+        
+        StartCoroutine(DoReset());
+    }
+
+     private void CheckingCentral()
+    {
+        if(centralData.centralHit && centralData.playerCentralHit)
             EventManager.Broadcast(GameEvent.OnIncreaseScore);
         else
             Debug.Log("FAILLLL");

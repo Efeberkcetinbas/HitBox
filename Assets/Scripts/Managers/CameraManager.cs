@@ -28,19 +28,13 @@ public class CameraManager : MonoBehaviour
 
     void OnHit()
     {
-        //ShakeIt();
-        ChangeFieldOfView(40,0.5f);
-    }
-
-    void OffGround()
-    {
-        ChangeFieldOfView(35,0.5f);
-    }
-
-    void EnemyKilled()
-    {
         ShakeIt();
+        //ChangeFieldOfView(40,0.5f);
     }
+
+    
+
+    
 
     
     public void ChangeFieldOfView(float fieldOfView, float duration = 1)

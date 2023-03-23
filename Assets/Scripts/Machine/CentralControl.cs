@@ -26,18 +26,18 @@ public class CentralControl : MonoBehaviour
     void Start()
     {
         index=Random.Range(0,Directions.Count);
-        Debug.Log(index + " / " + Directions[index].name);
+        //Debug.Log(index + " / " + Directions[index].name);
         ActiveDirection();
     }
 
     void Update()
     {
         time+=Time.deltaTime;
-        if(time>centralData.changeSignalTime)
+        if(time>centralData.reactionTime)
         {
-            ChangeIndex();
-            Debug.Log(index + " / " + Directions[index].name);
-            ActiveDirection();
+            Debug.LogWarning("GAME IS OVER");
+            /*ChangeIndex();
+            ActiveDirection();*/
             time=0;
         }
     }
@@ -83,6 +83,9 @@ public class CentralControl : MonoBehaviour
             case 3:
                 ActiveRight();
                 break;
+            case 4:
+                ActiveCentral();
+                break;
 
         }
 
@@ -106,5 +109,10 @@ public class CentralControl : MonoBehaviour
     private void ActiveRight()
     {
         EventManager.Broadcast(GameEvent.OnRight);
+    }
+
+    private void ActiveCentral()
+    {
+        EventManager.Broadcast(GameEvent.OnCenter);
     }
 }
