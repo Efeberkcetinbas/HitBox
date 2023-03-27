@@ -28,7 +28,10 @@ public enum GameEvent
     OnResetAll,
 
     //Buffs
-    OnSpeedUp
+    OnSpeedUp,
+
+    //Level Up
+    OnShuffle
 
 }
 

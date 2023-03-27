@@ -28,8 +28,15 @@ public class GameManager : MonoBehaviour
     void OnIncreaseScore()
     {
         gameData.score += 50;
-        Debug.Log(gameData.score);
+        CheckScore();
         EventManager.Broadcast(GameEvent.OnUpdateUI);
+    }
+
+    private void CheckScore()
+    {
+        if(gameData.score==500)
+            EventManager.Broadcast(GameEvent.OnShuffle);
+        //Effect
     }
 
     void OnIncreaseGold()

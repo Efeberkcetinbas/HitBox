@@ -85,21 +85,21 @@ public class PlayerControl : MonoBehaviour
                         EventManager.Broadcast(GameEvent.OnPlayerUp);
                         //animator.SetBool("Jump",true);
                     }
-                    else
-                    {
-                        DownDirection();
-                        playerData.playerCanMove=false;
-                        EventManager.Broadcast(GameEvent.OnPlayerDown);
-                        //animator.SetBool("Jump",true);
-                        // ??????????????
-                    }
-                    if(lastPosition.x==firstPosition.x && lastPosition.y==firstPosition.y)
+                    
+                    else if(lastPosition.x==firstPosition.x && lastPosition.y==firstPosition.y)
                     {
                         CentralDirection();
                         playerData.playerCanMove=false;
                         EventManager.Broadcast(GameEvent.OnPlayerCenter);
                     }
-
+                    else 
+                    {
+                        DownDirection();
+                        playerData.playerCanMove=false;
+                        EventManager.Broadcast(GameEvent.OnPlayerDown);
+                        //animator.SetBool("Jump",true);
+                        // ?????????????? SORUN VARRRR
+                    }
                     
                 }
 
