@@ -35,45 +35,60 @@ public class DirectionMove : MonoBehaviour
     private void UpMove()
     {
         centralData.upHit=true;
-        centralData.downHit=false;
-        centralData.rightHit=false;
-        centralData.leftHit=false;
-        centralData.centralHit=false;
+        //StartCoroutine(ResetHit(0));
     }
 
     private void DownMove()
     {
-        centralData.upHit=false;
         centralData.downHit=true;
-        centralData.rightHit=false;
-        centralData.leftHit=false;
-        centralData.centralHit=false;
+        //StartCoroutine(ResetHit(1));
     }
 
     private void LeftMove()
     {
-        centralData.upHit=false;
-        centralData.downHit=false;
-        centralData.rightHit=false;
         centralData.leftHit=true;
-        centralData.centralHit=false;
+        //StartCoroutine(ResetHit(2));
     }
 
     private void RightMove()
     {
-        centralData.upHit=false;
-        centralData.downHit=false;
         centralData.rightHit=true;
-        centralData.leftHit=false;
-        centralData.centralHit=false;
+        //StartCoroutine(ResetHit(3));
     }
 
     private void CentralMove()
     {
-        centralData.upHit=false;
-        centralData.downHit=false;
-        centralData.rightHit=false;
-        centralData.leftHit=false;
         centralData.centralHit=true;
+        //StartCoroutine(ResetHit(4));
+    }
+
+
+    private IEnumerator ResetHit(int index)
+    {
+        yield return new WaitForSeconds(centralData.reactionTime);
+        switch(index)
+        {
+            case 0:
+                centralData.upHit=false;
+                EventManager.Broadcast(GameEvent.OnResetUp);
+                break;
+            case 1:
+                centralData.downHit=false;
+                EventManager.Broadcast(GameEvent.OnResetDown);
+                break;
+            case 2:
+                centralData.leftHit=false;
+                EventManager.Broadcast(GameEvent.OnResetLeft);
+                break;
+            case 3:
+                centralData.rightHit=false;
+                EventManager.Broadcast(GameEvent.OnResetRight);
+                break;
+            case 4:
+                centralData.centralHit=false;
+                EventManager.Broadcast(GameEvent.OnResetCenter);
+                break;
+            
+        }
     }
 }

@@ -27,60 +27,76 @@ public class Check : MonoBehaviour
     private void CheckingUp()
     {
         if(centralData.upHit && centralData.playerUpHit)
+        {
             EventManager.Broadcast(GameEvent.OnIncreaseScore);
+            EventManager.Broadcast(GameEvent.OnResetUp);
+            playerData.playerCanMove=true;
+        }
         else
-            Debug.Log("FAILLLL");
+            EventManager.Broadcast(GameEvent.OnGameOver);
 
-        StartCoroutine(DoReset());
     }
 
     private void CheckingDown()
     {
         if(centralData.downHit && centralData.playerDownHit)
+        {
             EventManager.Broadcast(GameEvent.OnIncreaseScore);
+            EventManager.Broadcast(GameEvent.OnResetDown);
+            playerData.playerCanMove=true;
+        }
         else
-            Debug.Log("FAILLLL");
+            EventManager.Broadcast(GameEvent.OnGameOver);
 
-        StartCoroutine(DoReset());
     }
 
     private void CheckingLeft()
     {
         if(centralData.leftHit && centralData.playerLeftHit)
+        {
             EventManager.Broadcast(GameEvent.OnIncreaseScore);
+            EventManager.Broadcast(GameEvent.OnResetLeft);
+            playerData.playerCanMove=true;
+        }
         else
-            Debug.Log("FAILLLL");
+            EventManager.Broadcast(GameEvent.OnGameOver);
 
 
-        StartCoroutine(DoReset());
     }
 
     private void CheckingRight()
     {
         if(centralData.rightHit && centralData.playerRightHit)
+        {
             EventManager.Broadcast(GameEvent.OnIncreaseScore);
+            EventManager.Broadcast(GameEvent.OnResetRight);
+            playerData.playerCanMove=true;
+        }
         else
-            Debug.Log("FAILLLL");
+            EventManager.Broadcast(GameEvent.OnGameOver);
         
-        StartCoroutine(DoReset());
     }
 
      private void CheckingCentral()
     {
         if(centralData.centralHit && centralData.playerCentralHit)
+        {
             EventManager.Broadcast(GameEvent.OnIncreaseScore);
+            EventManager.Broadcast(GameEvent.OnResetCenter);
+            playerData.playerCanMove=true;
+        }
         else
-            Debug.Log("FAILLLL");
+            EventManager.Broadcast(GameEvent.OnGameOver);
         
-        StartCoroutine(DoReset());
     }
 
 
-    private IEnumerator DoReset()
+    /*private IEnumerator DoReset()
     {
         //Bu sureleri ortak bir surede tut. Ayri ayri karisir. Time Management gameData icinde
         yield return new WaitForSeconds(0.5f);
         playerData.playerCanMove=true;
         EventManager.Broadcast(GameEvent.OnResetAll);
-    }
+    }*/
+
 }

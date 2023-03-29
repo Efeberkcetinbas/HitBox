@@ -5,6 +5,7 @@ public class GameData : ScriptableObject
 {
     public int coins = 0;
     public int score = 0;
+    public int highScore=0;
 
 
 }

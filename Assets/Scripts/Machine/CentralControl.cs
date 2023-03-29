@@ -13,7 +13,7 @@ public class CentralControl : MonoBehaviour
     private float time;
     
 
-    private void OnEnable() 
+    /*private void OnEnable() 
     {
         EventManager.AddHandler(GameEvent.OnResetAll,ResetCentral);
     }
@@ -21,7 +21,7 @@ public class CentralControl : MonoBehaviour
     private void OnDisable() 
     {
         EventManager.RemoveHandler(GameEvent.OnResetAll,ResetCentral);
-    }
+    }*/
 
     void Start()
     {
@@ -36,18 +36,17 @@ public class CentralControl : MonoBehaviour
         time+=Time.deltaTime;
         if(time>centralData.reactionTime)
         {
-            Debug.LogWarning("GAME IS OVER");
-            /*ChangeIndex();
-            ActiveDirection();*/
+            ChangeIndex();
+            ActiveDirection();
             time=0;
         }
     }
 
     private void ResetCentral()
     {
-        time=0;
+        /*time=0;
         ChangeIndex();
-        ActiveDirection();
+        ActiveDirection();*/
     }
 
 
@@ -116,4 +115,6 @@ public class CentralControl : MonoBehaviour
     {
         EventManager.Broadcast(GameEvent.OnCenter);
     }
+
+    
 }

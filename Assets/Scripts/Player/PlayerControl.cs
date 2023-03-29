@@ -21,12 +21,20 @@ public class PlayerControl : MonoBehaviour
 
     private void OnEnable() 
     {
-        EventManager.AddHandler(GameEvent.OnResetAll,RestartDirection);    
+        EventManager.AddHandler(GameEvent.OnResetUp,ResetUpDirection);
+        EventManager.AddHandler(GameEvent.OnResetDown,ResetDownDirection);
+        EventManager.AddHandler(GameEvent.OnResetLeft,ResetLeftDirection);
+        EventManager.AddHandler(GameEvent.OnResetRight,ResetRightDirection);
+        EventManager.AddHandler(GameEvent.OnResetCenter,ResetCenterDirection);    
     }
 
     private void OnDisable() 
     {
-        EventManager.RemoveHandler(GameEvent.OnResetAll,RestartDirection);
+        EventManager.RemoveHandler(GameEvent.OnResetUp,ResetUpDirection);
+        EventManager.RemoveHandler(GameEvent.OnResetDown,ResetDownDirection);
+        EventManager.RemoveHandler(GameEvent.OnResetLeft,ResetLeftDirection);
+        EventManager.RemoveHandler(GameEvent.OnResetRight,ResetRightDirection);
+        EventManager.RemoveHandler(GameEvent.OnResetCenter,ResetCenterDirection);    
     }
 
 
@@ -64,13 +72,13 @@ public class PlayerControl : MonoBehaviour
                     {
                         //animator.SetBool("Jump",true);
                         RightDirection();
-                        playerData.playerCanMove=false;
+                        //playerData.playerCanMove=false;
                         EventManager.Broadcast(GameEvent.OnPlayerRight);
                     }
                     else
                     {
                         LeftDirection();
-                        playerData.playerCanMove=false;
+                        //playerData.playerCanMove=false;
                         EventManager.Broadcast(GameEvent.OnPlayerLeft);
                         //animator.SetBool("Jump",true);
                     }
@@ -81,7 +89,7 @@ public class PlayerControl : MonoBehaviour
                     if(lastPosition.y>firstPosition.y)
                     {
                         UpDirection();
-                        playerData.playerCanMove=false;
+                        //playerData.playerCanMove=false;
                         EventManager.Broadcast(GameEvent.OnPlayerUp);
                         //animator.SetBool("Jump",true);
                     }
@@ -89,13 +97,13 @@ public class PlayerControl : MonoBehaviour
                     else if(lastPosition.x==firstPosition.x && lastPosition.y==firstPosition.y)
                     {
                         CentralDirection();
-                        playerData.playerCanMove=false;
+                        //playerData.playerCanMove=false;
                         EventManager.Broadcast(GameEvent.OnPlayerCenter);
                     }
                     else 
                     {
                         DownDirection();
-                        playerData.playerCanMove=false;
+                        //playerData.playerCanMove=false;
                         EventManager.Broadcast(GameEvent.OnPlayerDown);
                         //animator.SetBool("Jump",true);
                         // ?????????????? SORUN VARRRR
@@ -118,57 +126,62 @@ public class PlayerControl : MonoBehaviour
 
     private void UpDirection()
     {
-        leftPunch.DOLocalMove(up.transform.position,0.25f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.3f));
+        leftPunch.DOLocalMove(up.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerUpHit=true;
-        centralData.playerDownHit=false;
-        centralData.playerLeftHit=false;
-        centralData.playerRightHit=false;
-        centralData.playerCentralHit=false;
 
     }
     private void DownDirection()
     {
-        RightPunch.DOLocalMove(down.transform.position,0.25f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-4.5f),0.3f));
-        centralData.playerUpHit=false;
+        RightPunch.DOLocalMove(down.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerDownHit=true;
-        centralData.playerLeftHit=false;
-        centralData.playerRightHit=false;
-        centralData.playerCentralHit=false;
     }
     private void LeftDirection()
     {
-        leftPunch.DOLocalMove(left.transform.position,0.25f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-4.5f),0.3f));
-        centralData.playerUpHit=false;
-        centralData.playerDownHit=true;
+        leftPunch.DOLocalMove(left.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerLeftHit=true;
-        centralData.playerRightHit=false;
-        centralData.playerCentralHit=false;
     }
     private void RightDirection()
     {
-        RightPunch.DOLocalMove(right.transform.position,0.25f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-4.5f),0.3f));
-        centralData.playerUpHit=false;
-        centralData.playerDownHit=false;
-        centralData.playerLeftHit=false;
+        RightPunch.DOLocalMove(right.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerRightHit=true;
-        centralData.playerCentralHit=false;
     }
     private void CentralDirection()
     {
-        RightPunch.DOLocalMove(central.transform.position,0.25f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-4.5f),0.3f));
-        centralData.playerUpHit=false;
-        centralData.playerDownHit=false;
-        centralData.playerLeftHit=false;
-        centralData.playerRightHit=false;
+        RightPunch.DOLocalMove(central.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerCentralHit=true;
     }
 
-    private void RestartDirection()
+    /*private void RestartDirection()
     {
         centralData.playerUpHit=false;
         centralData.playerDownHit=false;
         centralData.playerLeftHit=false;
         centralData.playerRightHit=false;
+        centralData.playerCentralHit=false;
+    }*/
+
+    private void ResetUpDirection()
+    {
+        centralData.playerUpHit=false;
+    }
+
+    private void ResetDownDirection()
+    {
+        centralData.playerDownHit=false;
+    }
+
+    private void ResetLeftDirection()
+    {
+        centralData.playerLeftHit=false;
+    }
+
+    private void ResetRightDirection()
+    {
+        centralData.playerRightHit=false;
+    }
+
+    private void ResetCenterDirection()
+    {
         centralData.playerCentralHit=false;
     }
 

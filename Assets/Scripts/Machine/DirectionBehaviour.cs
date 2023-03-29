@@ -7,6 +7,8 @@ public class DirectionBehaviour : MonoBehaviour
     [SerializeField] private Material Black,Green,Red;
 
     public List<Transform> directions=new List<Transform>();
+
+    public CentralData centralData;
     private void OnEnable() 
     {
         EventManager.AddHandler(GameEvent.OnUp,ChangeUpMat);
@@ -14,7 +16,12 @@ public class DirectionBehaviour : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnLeft,ChangeLeftMat);
         EventManager.AddHandler(GameEvent.OnRight,ChangeRightMat);
         EventManager.AddHandler(GameEvent.OnCenter,ChangeCentralMat);
-        EventManager.AddHandler(GameEvent.OnResetAll,ResetMat);
+
+        EventManager.AddHandler(GameEvent.OnResetUp,ResetUpMat);
+        EventManager.AddHandler(GameEvent.OnResetDown,ResetDownMat);
+        EventManager.AddHandler(GameEvent.OnResetLeft,ResetLeftMat);
+        EventManager.AddHandler(GameEvent.OnResetRight,ResetRightMat);
+        EventManager.AddHandler(GameEvent.OnResetCenter,ResetCenterMat);
     }
 
     private void OnDisable() 
@@ -24,7 +31,12 @@ public class DirectionBehaviour : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnLeft,ChangeLeftMat);
         EventManager.RemoveHandler(GameEvent.OnRight,ChangeRightMat);
         EventManager.RemoveHandler(GameEvent.OnCenter,ChangeCentralMat);
-        EventManager.RemoveHandler(GameEvent.OnResetAll,ResetMat);
+
+        EventManager.RemoveHandler(GameEvent.OnResetUp,ResetUpMat);
+        EventManager.RemoveHandler(GameEvent.OnResetDown,ResetDownMat);
+        EventManager.RemoveHandler(GameEvent.OnResetLeft,ResetLeftMat);
+        EventManager.RemoveHandler(GameEvent.OnResetRight,ResetRightMat);
+        EventManager.RemoveHandler(GameEvent.OnResetCenter,ResetCenterMat);
     }
 
     
@@ -54,12 +66,34 @@ public class DirectionBehaviour : MonoBehaviour
         directions[4].GetComponent<MeshRenderer>().material=Green;
     }
 
-    private void ResetMat()
+    private void ResetUpMat()
     {
-        for (int i = 0; i < directions.Count; i++)
-        {
-            directions[i].GetComponent<MeshRenderer>().material=Black;
-        }
+        directions[0].GetComponent<MeshRenderer>().material=Black;
+        centralData.upHit=false;
+
+    }
+    private void ResetDownMat()
+    {
+        directions[1].GetComponent<MeshRenderer>().material=Black;
+        centralData.downHit=false;
+    }
+
+    private void ResetLeftMat()
+    {
+        directions[2].GetComponent<MeshRenderer>().material=Black;
+        centralData.leftHit=false;
+    }
+
+    private void ResetRightMat()
+    {
+        directions[3].GetComponent<MeshRenderer>().material=Black;
+        centralData.rightHit=false;
+    }
+
+    private void ResetCenterMat()
+    {
+        directions[4].GetComponent<MeshRenderer>().material=Black;
+        centralData.centralHit=false;
     }
 
 }

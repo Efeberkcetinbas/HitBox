@@ -9,6 +9,9 @@ public enum GameEvent
     OnIncreaseGold,
     OnTargetHit,
     OnUpdateUI,
+    OnUpdateGameOverUI,
+    OnUpdateGameOverManager,
+    OnGameOver,
 
 
     //Directions
@@ -25,7 +28,12 @@ public enum GameEvent
     OnPlayerRight,
     OnPlayerCenter,
 
-    OnResetAll,
+    //Resets
+    OnResetUp,
+    OnResetDown,
+    OnResetLeft,
+    OnResetRight,
+    OnResetCenter,
 
     //Buffs
     OnSpeedUp,

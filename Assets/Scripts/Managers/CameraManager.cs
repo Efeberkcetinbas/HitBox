@@ -19,11 +19,13 @@ public class CameraManager : MonoBehaviour
     private void OnEnable() 
     {
         EventManager.AddHandler(GameEvent.OnTargetHit,OnHit);
+        EventManager.AddHandler(GameEvent.OnGameOver,GameOver);
     }
 
     private void OnDisable()
     {
         EventManager.RemoveHandler(GameEvent.OnTargetHit,OnHit);
+        EventManager.RemoveHandler(GameEvent.OnGameOver,GameOver);
     }
 
     void OnHit()
@@ -45,6 +47,15 @@ public class CameraManager : MonoBehaviour
     public void ResetCamera()
     {
         cm.m_Priority = 1;
+    }
+
+    void GameOver()
+    {
+        DOTween.To(() => mainCamera.fieldOfView, x => mainCamera.fieldOfView = x, 60, 0.5f).OnComplete(()=>
+        {
+            EventManager.Broadcast(GameEvent.OnUpdateGameOverManager);
+        });
+        
     }
 
 
