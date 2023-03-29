@@ -32,6 +32,7 @@ public class CentralControl : MonoBehaviour
 
     void Update()
     {
+        //Buraya hic gerek kalmayacak
         time+=Time.deltaTime;
         if(time>centralData.reactionTime)
         {
