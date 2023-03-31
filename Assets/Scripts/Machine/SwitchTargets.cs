@@ -5,7 +5,10 @@ using UnityEngine;
 public class SwitchTargets : MonoBehaviour
 {
     public List<Vector3> positions=new List<Vector3>();
+    public List<Vector3> rotations=new List<Vector3>();
+    
     public List<Transform> targets= new List<Transform>();
+
 
     
     private void OnEnable() 
@@ -20,11 +23,13 @@ public class SwitchTargets : MonoBehaviour
 
     void Shuffling()
     {
-        targets.Shuffle(targets.Count);
+        /*targets.Shuffle(targets.Count);
         for (int i = 0; i < targets.Count; i++)
         {
             targets[i].localPosition=positions[i];
-        }
+            //targets[i].localRotation=Quaternion.Euler(rotations[i]);
+        }*/
+
     }
     
 }

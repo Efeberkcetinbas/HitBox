@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DirectionBehaviour : MonoBehaviour
 {
-    [SerializeField] private Material Black,Green,Red;
+    [SerializeField] private Material Red,Green;
 
     public List<Transform> directions=new List<Transform>();
 
@@ -68,31 +68,31 @@ public class DirectionBehaviour : MonoBehaviour
 
     private void ResetUpMat()
     {
-        directions[0].GetComponent<MeshRenderer>().material=Black;
+        directions[0].GetComponent<MeshRenderer>().material=Red;
         centralData.upHit=false;
 
     }
     private void ResetDownMat()
     {
-        directions[1].GetComponent<MeshRenderer>().material=Black;
+        directions[1].GetComponent<MeshRenderer>().material=Red;
         centralData.downHit=false;
     }
 
     private void ResetLeftMat()
     {
-        directions[2].GetComponent<MeshRenderer>().material=Black;
+        directions[2].GetComponent<MeshRenderer>().material=Red;
         centralData.leftHit=false;
     }
 
     private void ResetRightMat()
     {
-        directions[3].GetComponent<MeshRenderer>().material=Black;
+        directions[3].GetComponent<MeshRenderer>().material=Red;
         centralData.rightHit=false;
     }
 
     private void ResetCenterMat()
     {
-        directions[4].GetComponent<MeshRenderer>().material=Black;
+        directions[4].GetComponent<MeshRenderer>().material=Red;
         centralData.centralHit=false;
     }
 

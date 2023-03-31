@@ -46,14 +46,29 @@ public class GameManager : MonoBehaviour
 
     void OnIncreaseScore()
     {
-        gameData.score += 50;
+        //gameData.score += 50;
+        DOTween.To(GetScore,ChangeScore,gameData.score+50,1f).OnUpdate(UpdateUI);
         CheckScore();
+    }
+
+    private int GetScore()
+    {
+        return gameData.score;
+    }
+
+    private void ChangeScore(int value)
+    {
+        gameData.score=value;
+    }
+
+    private void UpdateUI()
+    {
         EventManager.Broadcast(GameEvent.OnUpdateUI);
     }
 
     private void CheckScore()
     {
-        if(gameData.score==500)
+        if(gameData.score>500)
             EventManager.Broadcast(GameEvent.OnShuffle);
         //Effect
     }
