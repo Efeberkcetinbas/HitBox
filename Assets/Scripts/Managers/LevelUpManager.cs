@@ -29,8 +29,8 @@ public class LevelUpManager : MonoBehaviour
         {
             centralData.changeSignalTime-=0.25f;
             //EventManager.Broadcast(GameEvent.OnDecreaseReactionTime);
+            EventManager.Broadcast(GameEvent.OnShuffle);
         }
-        
 
     }
 }

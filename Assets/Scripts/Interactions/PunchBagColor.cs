@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class DirectionBehaviour : MonoBehaviour
+public class PunchBagColor : MonoBehaviour
 {
-    //[SerializeField] private Image Red,Green;
 
+    [SerializeField] private Material Red,Green;
     public List<Transform> directions=new List<Transform>();
-
-    public CentralData centralData;
     private void OnEnable() 
     {
         EventManager.AddHandler(GameEvent.OnUp,ChangeUpMat);
@@ -44,57 +41,51 @@ public class DirectionBehaviour : MonoBehaviour
 
     private void ChangeUpMat()
     {
-        directions[0].GetComponent<Image>().color=Color.green;
+        directions[0].GetComponent<MeshRenderer>().material=Green;
     }
 
     private void ChangeDownMat()
     {
-        directions[1].GetComponent<Image>().color=Color.green;
+        directions[1].GetComponent<MeshRenderer>().material=Green;
     }
 
     private void ChangeLeftMat()
     {
-        directions[2].GetComponent<Image>().color=Color.green;
+        directions[2].GetComponent<MeshRenderer>().material=Green;
     }
 
     private void ChangeRightMat()
     {
-        directions[3].GetComponent<Image>().color=Color.green;
+        directions[3].GetComponent<MeshRenderer>().material=Green;
     }
 
     private void ChangeCentralMat()
     {
-        directions[4].GetComponent<Image>().color=Color.green;
+        directions[4].GetComponent<MeshRenderer>().material=Green;
     }
 
     private void ResetUpMat()
     {
-        directions[0].GetComponent<Image>().color=Color.white;
-        centralData.upHit=false;
+        directions[0].GetComponent<MeshRenderer>().material=Red;
 
     }
     private void ResetDownMat()
     {
-        directions[1].GetComponent<Image>().color=Color.white;
-        centralData.downHit=false;
+        directions[1].GetComponent<MeshRenderer>().material=Red;
     }
 
     private void ResetLeftMat()
     {
-        directions[2].GetComponent<Image>().color=Color.white;
-        centralData.leftHit=false;
+        directions[2].GetComponent<MeshRenderer>().material=Red;
     }
 
     private void ResetRightMat()
     {
-        directions[3].GetComponent<Image>().color=Color.white;
-        centralData.rightHit=false;
+        directions[3].GetComponent<MeshRenderer>().material=Red;
     }
 
     private void ResetCenterMat()
     {
-        directions[4].GetComponent<Image>().color=Color.white;
-        centralData.centralHit=false;
+        directions[4].GetComponent<MeshRenderer>().material=Red;
     }
-
 }

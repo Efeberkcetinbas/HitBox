@@ -80,8 +80,8 @@ public class GameManager : MonoBehaviour
 
     private void CheckScore()
     {
-        if(gameData.score>500)
-            EventManager.Broadcast(GameEvent.OnShuffle);
+        /*if(gameData.score>500)
+            EventManager.Broadcast(GameEvent.OnShuffle);*/
         //Effect
     }
 

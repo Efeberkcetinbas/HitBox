@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
         musicSource.clip = GameLoop;
         //musicSource.Play();
         effectSource = gameObject.AddComponent<AudioSource>();
+        effectSource.volume=0.4f;
     }
 
     private void OnEnable() 
