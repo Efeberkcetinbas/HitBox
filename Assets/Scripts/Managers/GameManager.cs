@@ -12,10 +12,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject FailPanel;
     [SerializeField] private Ease ease;
 
+    public float InitialDifficultyValue;
+
 
     private void Awake() 
     {
         ClearData();
+    }
+
+    private void Start() 
+    {
+        centralData.changeSignalTime=InitialDifficultyValue;
+        
     }
 
     private void OnEnable()
@@ -38,7 +46,11 @@ public class GameManager : MonoBehaviour
         FailPanel.transform.DOScale(Vector3.one,1f).SetEase(ease);
         playerData.playerCanMove=false;
 
-        if(gameData.score>gameData.highScore) gameData.highScore=gameData.score;
+        if(gameData.score>gameData.highScore)
+        {
+            gameData.highScore=gameData.score;
+            PlayerPrefs.SetInt("highscore",gameData.highScore);
+        }
 
         EventManager.Broadcast(GameEvent.OnUpdateGameOverUI);
     }
@@ -80,6 +92,7 @@ public class GameManager : MonoBehaviour
     }
     void ClearData(){
         gameData.coins = 0;
+        gameData.highScore=PlayerPrefs.GetInt("highscore");
         gameData.score = 0;
         playerData.playerCanMove=true;
         centralData.upHit=false;

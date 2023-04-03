@@ -34,7 +34,7 @@ public class CentralControl : MonoBehaviour
     {
         //Buraya hic gerek kalmayacak
         time+=Time.deltaTime;
-        if(time>centralData.reactionTime)
+        if(time>centralData.changeSignalTime)
         {
             ChangeIndex();
             ActiveDirection();

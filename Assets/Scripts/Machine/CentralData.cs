@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New CentralData", menuName = "Data/Central Data", order = 2)]
 public class CentralData : ScriptableObject
 {
-    public float reactionTime;
+    //Kademeli olarak azaltacak bir algoritma gerekli
     public float changeSignalTime;
 
     //fake red ' te vuramayiz

@@ -11688,6 +11688,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634893530}
   m_CullTransparentMesh: 1
+--- !u!1 &663545743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 663545744}
+  - component: {fileID: 663545745}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &663545744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663545743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 698261217}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &663545745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663545743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a1b2988b78d1a45a51dd197949b0dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: 9f4d86bfae1d6fd46baf6b2f72449a4c, type: 2}
+  centralData: {fileID: 11400000, guid: 4941dc88ae4763742bce582a8dba40fe, type: 2}
+  levelUpThreshold: 400
 --- !u!1 &694548430
 GameObject:
   m_ObjectHideFlags: 0
@@ -11855,6 +11902,7 @@ Transform:
   - {fileID: 737658232}
   - {fileID: 275165064}
   - {fileID: 191735155}
+  - {fileID: 663545744}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19026,6 +19074,7 @@ MonoBehaviour:
   centralData: {fileID: 11400000, guid: 4941dc88ae4763742bce582a8dba40fe, type: 2}
   FailPanel: {fileID: 157965612}
   ease: 24
+  InitialDifficultyValue: 2
 --- !u!1 &1811170944
 GameObject:
   m_ObjectHideFlags: 0

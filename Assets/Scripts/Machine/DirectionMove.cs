@@ -65,7 +65,7 @@ public class DirectionMove : MonoBehaviour
 
     private IEnumerator ResetHit(int index)
     {
-        yield return new WaitForSeconds(centralData.reactionTime);
+        yield return new WaitForSeconds(centralData.changeSignalTime);
         switch(index)
         {
             case 0:

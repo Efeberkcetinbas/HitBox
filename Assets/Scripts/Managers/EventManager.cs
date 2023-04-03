@@ -39,7 +39,8 @@ public enum GameEvent
     OnSpeedUp,
 
     //Level Up
-    OnShuffle
+    OnShuffle,
+    OnDecreaseReactionTime
 
 }
 
