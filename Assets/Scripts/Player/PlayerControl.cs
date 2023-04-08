@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
 public class PlayerControl : MonoBehaviour
 {
     private Vector3 firstPosition;
@@ -14,6 +13,8 @@ public class PlayerControl : MonoBehaviour
 
     public PlayerData playerData;
     public CentralData centralData;
+
+
 
 
     [SerializeField] private Transform leftPunch,RightPunch;
@@ -36,6 +37,7 @@ public class PlayerControl : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnResetRight,ResetRightDirection);
         EventManager.RemoveHandler(GameEvent.OnResetCenter,ResetCenterDirection);    
     }
+
 
 
     void Update()
@@ -128,27 +130,32 @@ public class PlayerControl : MonoBehaviour
     {
         leftPunch.DOLocalMove(up.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerUpHit=true;
+        centralData.byHitUp=true;
 
     }
     private void DownDirection()
     {
         RightPunch.DOLocalMove(down.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerDownHit=true;
+        centralData.byHitDown=true;
     }
     private void LeftDirection()
     {
         leftPunch.DOLocalMove(left.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerLeftHit=true;
+        centralData.byHitLeft=true;
     }
     private void RightDirection()
     {
         RightPunch.DOLocalMove(right.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerRightHit=true;
+        centralData.byHitRight=true;
     }
     private void CentralDirection()
     {
         RightPunch.DOLocalMove(central.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerCentralHit=true;
+        centralData.byHitCenter=true;
     }
 
     /*private void RestartDirection()

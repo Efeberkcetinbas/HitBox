@@ -7,10 +7,15 @@ public class CentralData : ScriptableObject
     public float changeSignalTime;
 
     //fake red ' te vuramayiz
-    public bool canHit;
+    public float reactionTime;
 
-    //order
+    //order directions
     public bool upHit,downHit,leftHit,rightHit,centralHit;
 
+    //player hit direction and order direction match
     public bool playerUpHit,playerDownHit,playerLeftHit,playerRightHit,playerCentralHit;
+
+    //Check if player doesn't hit
+    public bool byHitUp,byHitDown,byHitLeft,byHitRight,byHitCenter;
+
 }

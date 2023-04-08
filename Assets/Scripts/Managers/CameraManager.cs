@@ -30,7 +30,7 @@ public class CameraManager : MonoBehaviour
 
     void OnHit()
     {
-        ShakeIt();
+        //ShakeIt();
         //ChangeFieldOfView(40,0.5f);
     }
 

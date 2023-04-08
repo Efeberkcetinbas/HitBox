@@ -69,31 +69,31 @@ public class DirectionBehaviour : MonoBehaviour
 
     private void ResetUpMat()
     {
-        directions[0].GetComponent<Image>().color=Color.white;
+        directions[0].GetComponent<Image>().color=Color.red;
         centralData.upHit=false;
 
     }
     private void ResetDownMat()
     {
-        directions[1].GetComponent<Image>().color=Color.white;
+        directions[1].GetComponent<Image>().color=Color.red;
         centralData.downHit=false;
     }
 
     private void ResetLeftMat()
     {
-        directions[2].GetComponent<Image>().color=Color.white;
+        directions[2].GetComponent<Image>().color=Color.red;
         centralData.leftHit=false;
     }
 
     private void ResetRightMat()
     {
-        directions[3].GetComponent<Image>().color=Color.white;
+        directions[3].GetComponent<Image>().color=Color.red;
         centralData.rightHit=false;
     }
 
     private void ResetCenterMat()
     {
-        directions[4].GetComponent<Image>().color=Color.white;
+        directions[4].GetComponent<Image>().color=Color.red;
         centralData.centralHit=false;
     }
 

@@ -11,28 +11,17 @@ public class CentralControl : MonoBehaviour
 
     private int index;
     private float time;
+
     
-
-    /*private void OnEnable() 
-    {
-        EventManager.AddHandler(GameEvent.OnResetAll,ResetCentral);
-    }
-
-    private void OnDisable() 
-    {
-        EventManager.RemoveHandler(GameEvent.OnResetAll,ResetCentral);
-    }*/
 
     void Start()
     {
         index=Random.Range(0,Directions.Count);
-        //Debug.Log(index + " / " + Directions[index].name);
         ActiveDirection();
     }
 
     void Update()
     {
-        //Buraya hic gerek kalmayacak
         time+=Time.deltaTime;
         if(time>centralData.changeSignalTime)
         {
@@ -40,13 +29,6 @@ public class CentralControl : MonoBehaviour
             ActiveDirection();
             time=0;
         }
-    }
-
-    private void ResetCentral()
-    {
-        /*time=0;
-        ChangeIndex();
-        ActiveDirection();*/
     }
 
 
@@ -94,26 +76,72 @@ public class CentralControl : MonoBehaviour
     private void ActiveUp()
     {
         EventManager.Broadcast(GameEvent.OnUp);
+        centralData.byHitUp=false;
+        StartCoroutine(CheckIfUpHitByPunch());
     }
 
     private void ActiveDown()
     {
         EventManager.Broadcast(GameEvent.OnDown);
+        centralData.byHitDown=false;
+        StartCoroutine(CheckIfDownHitByPunch());
     }
 
     private void ActiveLeft()
     {
         EventManager.Broadcast(GameEvent.OnLeft);
+        centralData.byHitLeft=false;
+        StartCoroutine(CheckIfLeftHitByPunch());
     }
 
     private void ActiveRight()
     {
         EventManager.Broadcast(GameEvent.OnRight);
+        centralData.byHitRight=false;
+        StartCoroutine(CheckIfRightHitByPunch());
     }
 
     private void ActiveCentral()
     {
         EventManager.Broadcast(GameEvent.OnCenter);
+        centralData.byHitCenter=false;
+        StartCoroutine(CheckIfCenterHitByPunch());
+    }
+
+
+    private IEnumerator CheckIfUpHitByPunch()
+    {
+        yield return new WaitForSeconds(centralData.reactionTime);
+        if(!centralData.byHitUp)
+            EventManager.Broadcast(GameEvent.OnGameOver);
+    }
+
+    private IEnumerator CheckIfDownHitByPunch()
+    {
+        yield return new WaitForSeconds(centralData.reactionTime);
+        if(!centralData.byHitDown)
+            EventManager.Broadcast(GameEvent.OnGameOver);
+    }
+
+    private IEnumerator CheckIfLeftHitByPunch()
+    {
+        yield return new WaitForSeconds(centralData.reactionTime);
+        if(!centralData.byHitLeft)
+            EventManager.Broadcast(GameEvent.OnGameOver);
+    }
+
+    private IEnumerator CheckIfRightHitByPunch()
+    {
+        yield return new WaitForSeconds(centralData.reactionTime);
+        if(!centralData.byHitRight)
+            EventManager.Broadcast(GameEvent.OnGameOver);
+    }
+
+    private IEnumerator CheckIfCenterHitByPunch()
+    {
+        yield return new WaitForSeconds(centralData.reactionTime);
+        if(!centralData.byHitCenter)
+            EventManager.Broadcast(GameEvent.OnGameOver);
     }
 
     

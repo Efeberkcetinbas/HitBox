@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd8ef0cf5a9e9348b75447ee4b30e44, type: 3}
   m_Name: CentralData
   m_EditorClassIdentifier: 
-  reactionTime: 0.5
   changeSignalTime: 3
-  canHit: 1
+  reactionTime: 3
   upHit: 1
   downHit: 1
   leftHit: 1
@@ -25,3 +24,8 @@ MonoBehaviour:
   playerLeftHit: 0
   playerRightHit: 0
   playerCentralHit: 1
+  byHitUp: 1
+  byHitDown: 1
+  byHitLeft: 1
+  byHitRight: 1
+  byHitCenter: 1

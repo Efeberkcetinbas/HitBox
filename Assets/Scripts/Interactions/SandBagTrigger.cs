@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Cinemachine;
 
 public class SandBagTrigger : Obstacable
 {
@@ -13,6 +14,8 @@ public class SandBagTrigger : Obstacable
     
     [SerializeField] private Transform particlePos;
 
+    [SerializeField] private CinemachineImpulseSource impulseSource;
+
     private void Start() 
     {
         oldScale=transform.localScale;
@@ -22,6 +25,7 @@ public class SandBagTrigger : Obstacable
         transform.DOLocalMoveZ(z,duration);
         transform.DOScale(oldScale/3f,duration);
         EventManager.Broadcast(GameEvent.OnTargetHit);
+        impulseSource.GenerateImpulse();
         Instantiate(particleEffect,particlePos.position,Quaternion.identity);
         Debug.Log("WORK IS");
     }
