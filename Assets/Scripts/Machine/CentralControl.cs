@@ -77,7 +77,7 @@ public class CentralControl : MonoBehaviour
     {
         EventManager.Broadcast(GameEvent.OnUp);
         centralData.byHitUp=false;
-        StartCoroutine(CheckIfUpHitByPunch());
+        //StartCoroutine(CheckIfUpHitByPunch());
     }
 
     private void ActiveDown()
@@ -108,40 +108,58 @@ public class CentralControl : MonoBehaviour
         StartCoroutine(CheckIfCenterHitByPunch());
     }
 
-
-    private IEnumerator CheckIfUpHitByPunch()
+    
+    public IEnumerator CheckIfUpHitByPunch()
     {
         yield return new WaitForSeconds(centralData.reactionTime);
-        if(!centralData.byHitUp)
+        /*if(!centralData.byHitUp)
+        {
+            Debug.Log("TIME IS UP");
             EventManager.Broadcast(GameEvent.OnGameOver);
+        }*/
     }
 
-    private IEnumerator CheckIfDownHitByPunch()
+    public IEnumerator CheckIfDownHitByPunch()
     {
         yield return new WaitForSeconds(centralData.reactionTime);
-        if(!centralData.byHitDown)
+        /*if(!centralData.byHitDown)
+        {
+            Debug.Log("TIME IS UP");
             EventManager.Broadcast(GameEvent.OnGameOver);
+        }*/
     }
 
-    private IEnumerator CheckIfLeftHitByPunch()
+    public IEnumerator CheckIfLeftHitByPunch()
     {
         yield return new WaitForSeconds(centralData.reactionTime);
-        if(!centralData.byHitLeft)
+        /*if(!centralData.byHitLeft)
+        {
+            Debug.Log("TIME IS UP");
             EventManager.Broadcast(GameEvent.OnGameOver);
+        }*/
+        
     }
 
-    private IEnumerator CheckIfRightHitByPunch()
+    public IEnumerator CheckIfRightHitByPunch()
     {
         yield return new WaitForSeconds(centralData.reactionTime);
-        if(!centralData.byHitRight)
+        /*if(!centralData.byHitRight)
+        {
+            Debug.Log("TIME IS UP");
             EventManager.Broadcast(GameEvent.OnGameOver);
+        }*/
+        
     }
 
-    private IEnumerator CheckIfCenterHitByPunch()
+    public IEnumerator CheckIfCenterHitByPunch()
     {
         yield return new WaitForSeconds(centralData.reactionTime);
-        if(!centralData.byHitCenter)
+        /*if(!centralData.byHitCenter)
+        {
+            Debug.Log("TIME IS UP");
             EventManager.Broadcast(GameEvent.OnGameOver);
+        }*/
+        
     }
 
     

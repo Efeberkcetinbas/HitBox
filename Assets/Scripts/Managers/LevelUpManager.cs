@@ -7,6 +7,7 @@ public class LevelUpManager : MonoBehaviour
     public GameData gameData;
     public CentralData centralData;
     public int levelUpThreshold;
+    public int scoreLevelUpThreshold;
 
     private void Start() 
     {
@@ -20,10 +21,17 @@ public class LevelUpManager : MonoBehaviour
             OnDecreaseReaction();
             levelUpThreshold*=2;
         }
+
+        if(gameData.score>=scoreLevelUpThreshold)
+        {
+            OnIncreaseScoreAmount();
+            scoreLevelUpThreshold*=2;
+        }
+
     }
 
 
-    public void OnDecreaseReaction()
+    private void OnDecreaseReaction()
     {
         if(centralData.changeSignalTime>0.25f)
         {
@@ -31,6 +39,13 @@ public class LevelUpManager : MonoBehaviour
             //EventManager.Broadcast(GameEvent.OnDecreaseReactionTime);
             EventManager.Broadcast(GameEvent.OnShuffle);
         }
-
     }
+
+    private void OnIncreaseScoreAmount()
+    {
+        if(gameData.increaseScore<100)
+            gameData.increaseScore+=25;
+    }
+
+    
 }

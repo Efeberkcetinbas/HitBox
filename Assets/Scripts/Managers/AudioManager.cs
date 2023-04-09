@@ -5,9 +5,11 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioClip GameLoop,BuffMusic;
-    public AudioClip HitSound,GameOverSound;
+    public AudioClip HitSound1,HitSound2,GameOverSound;
 
     AudioSource musicSource,effectSource;
+
+    private bool hit;
 
     private void Start() {
         musicSource = GetComponent<AudioSource>();
@@ -30,7 +32,11 @@ public class AudioManager : MonoBehaviour
 
     void OnHit()
     {
-        effectSource.PlayOneShot(HitSound);
+        hit=!hit;
+        if(hit)
+            effectSource.PlayOneShot(HitSound1);
+        else
+            effectSource.PlayOneShot(HitSound2);
     }
 
     void OnGameOver()

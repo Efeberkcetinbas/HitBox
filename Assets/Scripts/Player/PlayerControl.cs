@@ -14,6 +14,8 @@ public class PlayerControl : MonoBehaviour
     public PlayerData playerData;
     public CentralData centralData;
 
+    private CentralControl centralControl;
+
 
 
 
@@ -38,7 +40,11 @@ public class PlayerControl : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnResetCenter,ResetCenterDirection);    
     }
 
-
+    private void Start() 
+    {
+        centralControl=FindObjectOfType<CentralControl>();
+        
+    }
 
     void Update()
     {
@@ -131,31 +137,35 @@ public class PlayerControl : MonoBehaviour
         leftPunch.DOLocalMove(up.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerUpHit=true;
         centralData.byHitUp=true;
-
+        centralControl.StopCoroutine(centralControl.CheckIfUpHitByPunch());
     }
     private void DownDirection()
     {
         RightPunch.DOLocalMove(down.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerDownHit=true;
         centralData.byHitDown=true;
+        centralControl.StopCoroutine(centralControl.CheckIfDownHitByPunch());
     }
     private void LeftDirection()
     {
         leftPunch.DOLocalMove(left.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerLeftHit=true;
         centralData.byHitLeft=true;
+        centralControl.StopCoroutine(centralControl.CheckIfLeftHitByPunch());
     }
     private void RightDirection()
     {
         RightPunch.DOLocalMove(right.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerRightHit=true;
         centralData.byHitRight=true;
+        centralControl.StopCoroutine(centralControl.CheckIfRightHitByPunch());
     }
     private void CentralDirection()
     {
         RightPunch.DOLocalMove(central.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerCentralHit=true;
         centralData.byHitCenter=true;
+        centralControl.StopCoroutine(centralControl.CheckIfCenterHitByPunch());
     }
 
     /*private void RestartDirection()

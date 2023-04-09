@@ -180,8 +180,8 @@ MonoBehaviour:
     m_ImpulseType: 3
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
-    m_AmplitudeGain: 7
-    m_FrequencyGain: 0.2
+    m_AmplitudeGain: 5
+    m_FrequencyGain: 0.05
     m_RepeatMode: 0
     m_Randomize: 1
     m_TimeEnvelope:
@@ -199,7 +199,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       m_AttackTime: 0
       m_SustainTime: 0.1
-      m_DecayTime: 0.3
+      m_DecayTime: 0.1
       m_ScaleWithImpact: 1
       m_HoldForever: 0
     m_ImpactRadius: 100
@@ -266,7 +266,7 @@ MonoBehaviour:
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
     m_AmplitudeGain: 5
-    m_FrequencyGain: 0.2
+    m_FrequencyGain: 0.05
     m_RepeatMode: 0
     m_Randomize: 1
     m_TimeEnvelope:
@@ -284,7 +284,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       m_AttackTime: 0
       m_SustainTime: 0.1
-      m_DecayTime: 0.3
+      m_DecayTime: 0.1
       m_ScaleWithImpact: 1
       m_HoldForever: 0
     m_ImpactRadius: 100
@@ -444,8 +444,8 @@ MonoBehaviour:
     m_ImpulseType: 3
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
-    m_AmplitudeGain: 7
-    m_FrequencyGain: 0.2
+    m_AmplitudeGain: 5
+    m_FrequencyGain: 0.05
     m_RepeatMode: 0
     m_Randomize: 1
     m_TimeEnvelope:
@@ -463,7 +463,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       m_AttackTime: 0
       m_SustainTime: 0.1
-      m_DecayTime: 0.3
+      m_DecayTime: 0.1
       m_ScaleWithImpact: 1
       m_HoldForever: 0
     m_ImpactRadius: 100
@@ -5532,8 +5532,8 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103315287}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -5833,7 +5833,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179303362}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -5884,7 +5884,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179303362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8655, z: 0}
+  m_LocalPosition: {x: 0, y: 3.9153805, z: 0}
   m_LocalScale: {x: 0.5, y: 3.075739, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5919,7 +5919,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185814762}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -3, z: -0.1}
+  m_LocalPosition: {x: 0, y: -1, z: -0.1}
   m_LocalScale: {x: 1.1011218, y: 0.431951, z: 0.9250886}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5996,7 +5996,12 @@ MonoBehaviour:
   old_z: -0.1
   duration: 0.25
   particlePos: {fileID: 2035638642}
+  pointPos: {fileID: 2035638642}
   impulseSource: {fileID: 6077645}
+  increaseScorePrefab: {fileID: 2580882635652765444, guid: c1809a5d49ef40a4094bc7f31dfc37a7, type: 3}
+  gameData: {fileID: 11400000, guid: 9f4d86bfae1d6fd46baf6b2f72449a4c, type: 2}
+  hitSound: {fileID: 8300000, guid: 5cadf97df2d9c7c4b8a2f9d27b353ae3, type: 3}
+  audioManager: {fileID: 737658233}
 --- !u!65 &185814767
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10906,8 +10911,8 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223676240}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -11005,8 +11010,8 @@ MonoBehaviour:
     m_ImpulseType: 3
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
-    m_AmplitudeGain: 7
-    m_FrequencyGain: 0.2
+    m_AmplitudeGain: 5
+    m_FrequencyGain: 0.05
     m_RepeatMode: 0
     m_Randomize: 1
     m_TimeEnvelope:
@@ -11024,7 +11029,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       m_AttackTime: 0
       m_SustainTime: 0.1
-      m_DecayTime: 0.3
+      m_DecayTime: 0.1
       m_ScaleWithImpact: 1
       m_HoldForever: 0
     m_ImpactRadius: 100
@@ -11173,7 +11178,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253430662}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -11224,7 +11229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253430662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.9161, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1337806, z: 0}
   m_LocalScale: {x: 0.5, y: 3.1676998, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11580,7 +11585,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419432841}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -11631,7 +11636,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419432841}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: 2.0498805, z: 0}
   m_LocalScale: {x: 3, y: 0.5, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11679,8 +11684,8 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444169491}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -11760,7 +11765,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448664651}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -11811,7 +11816,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448664651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 2.0498805, z: 0}
   m_LocalScale: {x: 3, y: 0.5, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12090,6 +12095,7 @@ MonoBehaviour:
   gameData: {fileID: 11400000, guid: 9f4d86bfae1d6fd46baf6b2f72449a4c, type: 2}
   centralData: {fileID: 11400000, guid: 4941dc88ae4763742bce582a8dba40fe, type: 2}
   levelUpThreshold: 200
+  scoreLevelUpThreshold: 200
 --- !u!1 &694548430
 GameObject:
   m_ObjectHideFlags: 0
@@ -12201,7 +12207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 2}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &697537663
@@ -12402,7 +12408,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameLoop: {fileID: 0}
   BuffMusic: {fileID: 0}
-  HitSound: {fileID: 8300000, guid: 7da886a070ddeee4ba6bc0fd415e462c, type: 3}
+  HitSound1: {fileID: 8300000, guid: 5cadf97df2d9c7c4b8a2f9d27b353ae3, type: 3}
+  HitSound2: {fileID: 8300000, guid: 6ca11751841851d43b9dc31e047150da, type: 3}
   GameOverSound: {fileID: 8300000, guid: 1d2f348735857f047b7a5defd60d930a, type: 3}
 --- !u!82 &737658234
 AudioSource:
@@ -12611,7 +12618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 3}
+  m_AnchoredPosition: {x: 0, y: 5}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &798621900
@@ -13152,7 +13159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.15, z: -9.79}
+  m_LocalPosition: {x: 0, y: 1.15, z: -10.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18341,8 +18348,8 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259370191}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -18455,7 +18462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353286224}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 3, z: -0.1}
+  m_LocalPosition: {x: 0, y: 5, z: -0.1}
   m_LocalScale: {x: 1.1011218, y: 0.431951, z: 0.9250886}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18532,7 +18539,12 @@ MonoBehaviour:
   old_z: -0.1
   duration: 0.25
   particlePos: {fileID: 315844719}
+  pointPos: {fileID: 315844719}
   impulseSource: {fileID: 1417788688}
+  increaseScorePrefab: {fileID: 2580882635652765444, guid: c1809a5d49ef40a4094bc7f31dfc37a7, type: 3}
+  gameData: {fileID: 11400000, guid: 9f4d86bfae1d6fd46baf6b2f72449a4c, type: 2}
+  hitSound: {fileID: 8300000, guid: 5cadf97df2d9c7c4b8a2f9d27b353ae3, type: 3}
+  audioManager: {fileID: 737658233}
 --- !u!65 &1353286229
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18604,7 +18616,7 @@ MonoBehaviour:
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
     m_AmplitudeGain: 5
-    m_FrequencyGain: 0.2
+    m_FrequencyGain: 0.05
     m_RepeatMode: 0
     m_Randomize: 1
     m_TimeEnvelope:
@@ -18622,7 +18634,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       m_AttackTime: 0
       m_SustainTime: 0.1
-      m_DecayTime: 0.3
+      m_DecayTime: 0.1
       m_ScaleWithImpact: 1
       m_HoldForever: 0
     m_ImpactRadius: 100
@@ -18734,7 +18746,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 2.85, y: 0}
+  m_AnchoredPosition: {x: 2.85, y: 2}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1440696823
@@ -18793,7 +18805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -2.85}
+  m_AnchoredPosition: {x: 0, y: -0.8}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1503072742
@@ -19075,7 +19087,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572281638}
   m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 2.8835645, y: -0.14988062, z: -0.100000024}
+  m_LocalPosition: {x: 3, y: 2, z: -0.100000024}
   m_LocalScale: {x: 1.1011218, y: 0.431951, z: 0.9250886}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19152,7 +19164,12 @@ MonoBehaviour:
   old_z: -0.1
   duration: 0.25
   particlePos: {fileID: 1621060927}
+  pointPos: {fileID: 1621060927}
   impulseSource: {fileID: 225952582}
+  increaseScorePrefab: {fileID: 2580882635652765444, guid: c1809a5d49ef40a4094bc7f31dfc37a7, type: 3}
+  gameData: {fileID: 11400000, guid: 9f4d86bfae1d6fd46baf6b2f72449a4c, type: 2}
+  hitSound: {fileID: 8300000, guid: 6ca11751841851d43b9dc31e047150da, type: 3}
+  audioManager: {fileID: 737658233}
 --- !u!65 &1572281643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19229,11 +19246,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
-  - {x: 0, y: 3, z: -0.1}
-  - {x: 0, y: -2.85, z: -0.1}
-  - {x: -3, y: 0, z: -0.1}
-  - {x: 2.85, y: 0, z: -0.1}
-  - {x: 0, y: 0, z: -0.1}
+  - {x: 0, y: 5, z: -0.1}
+  - {x: 0, y: -0.8, z: -0.1}
+  - {x: -2.85, y: 2, z: -0.1}
+  - {x: 2.85, y: 2, z: -0.1}
+  - {x: 0, y: 2, z: -0.1}
   targets:
   - {fileID: 798621899}
   - {fileID: 1503072741}
@@ -19368,7 +19385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722314860}
   m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -3.1159492, y: -0.14975719, z: -0.100000024}
+  m_LocalPosition: {x: -3, y: 2, z: -0.100000024}
   m_LocalScale: {x: 1.1011218, y: 0.431951, z: 0.9250886}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19445,7 +19462,12 @@ MonoBehaviour:
   old_z: -0.1
   duration: 0.25
   particlePos: {fileID: 312842295}
+  pointPos: {fileID: 312842295}
   impulseSource: {fileID: 11541039}
+  increaseScorePrefab: {fileID: 2580882635652765444, guid: c1809a5d49ef40a4094bc7f31dfc37a7, type: 3}
+  gameData: {fileID: 11400000, guid: 9f4d86bfae1d6fd46baf6b2f72449a4c, type: 2}
+  hitSound: {fileID: 8300000, guid: 6ca11751841851d43b9dc31e047150da, type: 3}
+  audioManager: {fileID: 737658233}
 --- !u!65 &1722314865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19487,7 +19509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763727635}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0, y: 2, z: -0.1}
   m_LocalScale: {x: 1.1011218, y: 0.431951, z: 0.9250886}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19514,7 +19536,12 @@ MonoBehaviour:
   old_z: -0.1
   duration: 0.25
   particlePos: {fileID: 2008255439}
+  pointPos: {fileID: 2008255439}
   impulseSource: {fileID: 1013873}
+  increaseScorePrefab: {fileID: 2580882635652765444, guid: c1809a5d49ef40a4094bc7f31dfc37a7, type: 3}
+  gameData: {fileID: 11400000, guid: 9f4d86bfae1d6fd46baf6b2f72449a4c, type: 2}
+  hitSound: {fileID: 8300000, guid: 5cadf97df2d9c7c4b8a2f9d27b353ae3, type: 3}
+  audioManager: {fileID: 737658233}
 --- !u!65 &1763727638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24927,7 +24954,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -3, y: 0}
+  m_AnchoredPosition: {x: -2.85, y: 2}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1858168405
@@ -25100,7 +25127,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910792570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.15, z: -9.79}
+  m_LocalPosition: {x: 0, y: 1.15, z: -10.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -55007,8 +55034,8 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3293102401034716045}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1

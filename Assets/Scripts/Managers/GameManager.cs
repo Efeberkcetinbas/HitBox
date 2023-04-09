@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     void OnIncreaseScore()
     {
         //gameData.score += 50;
-        DOTween.To(GetScore,ChangeScore,gameData.score+50,1f).OnUpdate(UpdateUI);
+        DOTween.To(GetScore,ChangeScore,gameData.score+gameData.increaseScore,1f).OnUpdate(UpdateUI);
         CheckScore();
     }
 
@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
     }
     void ClearData(){
         gameData.coins = 0;
+        gameData.increaseScore=25;
         gameData.highScore=PlayerPrefs.GetInt("highscore");
         gameData.score = 0;
         playerData.playerCanMove=true;
