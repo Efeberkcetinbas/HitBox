@@ -17,6 +17,8 @@ public class PlayerControl : MonoBehaviour
     private CentralControl centralControl;
 
 
+    private bool isLeft;
+
 
 
     [SerializeField] private Transform leftPunch,RightPunch;
@@ -134,48 +136,56 @@ public class PlayerControl : MonoBehaviour
 
     private void UpDirection()
     {
-        leftPunch.DOLocalMove(up.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
+        DoPunch(up);
+        //leftPunch.DOLocalMove(up.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerUpHit=true;
         centralData.byHitUp=true;
         centralControl.StopCoroutine(centralControl.CheckIfUpHitByPunch());
     }
     private void DownDirection()
     {
-        RightPunch.DOLocalMove(down.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
+        DoPunch(down);
+        //RightPunch.DOLocalMove(down.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerDownHit=true;
         centralData.byHitDown=true;
         centralControl.StopCoroutine(centralControl.CheckIfDownHitByPunch());
     }
     private void LeftDirection()
     {
-        leftPunch.DOLocalMove(left.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
+        DoPunch(left);
+        //leftPunch.DOLocalMove(left.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerLeftHit=true;
         centralData.byHitLeft=true;
         centralControl.StopCoroutine(centralControl.CheckIfLeftHitByPunch());
     }
     private void RightDirection()
     {
-        RightPunch.DOLocalMove(right.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
+        DoPunch(right);
+        //RightPunch.DOLocalMove(right.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerRightHit=true;
         centralData.byHitRight=true;
         centralControl.StopCoroutine(centralControl.CheckIfRightHitByPunch());
     }
     private void CentralDirection()
     {
-        RightPunch.DOLocalMove(central.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
+        DoPunch(central);
+        //RightPunch.DOLocalMove(central.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerCentralHit=true;
         centralData.byHitCenter=true;
         centralControl.StopCoroutine(centralControl.CheckIfCenterHitByPunch());
     }
 
-    /*private void RestartDirection()
+    private void DoPunch(Transform punch)
     {
-        centralData.playerUpHit=false;
-        centralData.playerDownHit=false;
-        centralData.playerLeftHit=false;
-        centralData.playerRightHit=false;
-        centralData.playerCentralHit=false;
-    }*/
+        isLeft=!isLeft;
+
+        if(isLeft)
+            leftPunch.DOLocalMove(punch.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
+        else
+            RightPunch.DOLocalMove(punch.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
+
+    }
+
 
     private void ResetUpDirection()
     {
