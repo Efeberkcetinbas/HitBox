@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
 
     private float dragDistance;
 
-    //public Animator animator;
+    public Animator animator;
 
     public PlayerData playerData;
     public CentralData centralData;
@@ -180,10 +180,26 @@ public class PlayerControl : MonoBehaviour
         isLeft=!isLeft;
 
         if(isLeft)
-            leftPunch.DOLocalMove(punch.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
+        {
+            animator.SetBool("Punch2",true);
+            animator.SetBool("Punch1",false);
+            StartCoroutine(SetFalse(animator,"Punch2",false));
+            leftPunch.DOLocalMove(punch.transform.position,0.2f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.2f));
+        }
         else
-            RightPunch.DOLocalMove(punch.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
+        {
+            animator.SetBool("Punch1",true);
+            animator.SetBool("Punch2",false);
+            StartCoroutine(SetFalse(animator,"Punch1",false));
+            RightPunch.DOLocalMove(punch.transform.position,0.2f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.2f));
+        }
 
+    }
+
+    private IEnumerator SetFalse(Animator animator,string Punch,bool closeLoop)
+    {
+        yield return new WaitForSeconds(0.1f);
+        animator.SetBool(Punch,closeLoop);
     }
 
 
