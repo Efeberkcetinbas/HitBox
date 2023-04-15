@@ -16,6 +16,8 @@ public class PlayerControl : MonoBehaviour
 
     private CentralControl centralControl;
 
+    [SerializeField] private Transform rightGlove,leftGlove;
+
 
     private bool isLeft;
 
@@ -30,7 +32,9 @@ public class PlayerControl : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnResetDown,ResetDownDirection);
         EventManager.AddHandler(GameEvent.OnResetLeft,ResetLeftDirection);
         EventManager.AddHandler(GameEvent.OnResetRight,ResetRightDirection);
-        EventManager.AddHandler(GameEvent.OnResetCenter,ResetCenterDirection);    
+        EventManager.AddHandler(GameEvent.OnResetCenter,ResetCenterDirection);
+
+        EventManager.AddHandler(GameEvent.OnTargetHit,OnTargetHit);    
     }
 
     private void OnDisable() 
@@ -39,7 +43,9 @@ public class PlayerControl : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnResetDown,ResetDownDirection);
         EventManager.RemoveHandler(GameEvent.OnResetLeft,ResetLeftDirection);
         EventManager.RemoveHandler(GameEvent.OnResetRight,ResetRightDirection);
-        EventManager.RemoveHandler(GameEvent.OnResetCenter,ResetCenterDirection);    
+        EventManager.RemoveHandler(GameEvent.OnResetCenter,ResetCenterDirection);   
+
+        EventManager.RemoveHandler(GameEvent.OnTargetHit,OnTargetHit);
     }
 
     private void Start() 
@@ -175,23 +181,28 @@ public class PlayerControl : MonoBehaviour
         centralControl.StopCoroutine(centralControl.CheckIfCenterHitByPunch());
     }
 
+    private void OnTargetHit()
+    {
+        if(isLeft) leftGlove.DOScale(new Vector3(0.6f,0.6f,0.6f),0.2f).OnComplete(()=>leftGlove.DOScale(new Vector3(0.4f,0.4f,0.4f),0.2f));
+        else    rightGlove.DOScale(new Vector3(0.6f,0.6f,0.6f),0.2f).OnComplete(()=>rightGlove.DOScale(new Vector3(0.4f,0.4f,0.4f),0.2f));
+    }
     private void DoPunch(Transform punch)
     {
         isLeft=!isLeft;
 
         if(isLeft)
         {
-            animator.SetBool("Punch2",true);
+            /*animator.SetBool("Punch2",true);
             animator.SetBool("Punch1",false);
-            StartCoroutine(SetFalse(animator,"Punch2",false));
-            leftPunch.DOLocalMove(punch.transform.position,0.2f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.2f));
+            StartCoroutine(SetFalse(animator,"Punch2",false));*/
+            leftPunch.DOMove(punch.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.0610569f,0.0910638f,0.0075707f),0.1f));
         }
         else
         {
-            animator.SetBool("Punch1",true);
+            /*animator.SetBool("Punch1",true);
             animator.SetBool("Punch2",false);
-            StartCoroutine(SetFalse(animator,"Punch1",false));
-            RightPunch.DOLocalMove(punch.transform.position,0.2f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.2f));
+            StartCoroutine(SetFalse(animator,"Punch1",false));*/
+            RightPunch.DOMove(punch.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.0610569f,0.0910638f,0.0075707f),0.1f));
         }
 
     }

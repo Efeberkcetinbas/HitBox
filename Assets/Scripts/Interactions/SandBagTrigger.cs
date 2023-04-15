@@ -25,6 +25,8 @@ public class SandBagTrigger : Obstacable
 
     [SerializeField] private AudioManager audioManager;
 
+    [SerializeField] private bool isLeft,isRight,isUp,isDown,isCenter;
+
 
     private void Start() 
     {
@@ -39,6 +41,12 @@ public class SandBagTrigger : Obstacable
         impulseSource.GenerateImpulse();
         Instantiate(particleEffect,particlePos.position,Quaternion.identity);
         StartCoinMove(gameObject);
+
+        if(isLeft) EventManager.Broadcast(GameEvent.OnRivalHitLeft);
+        if(isRight) EventManager.Broadcast(GameEvent.OnRivalHitRight);
+        if(isUp) EventManager.Broadcast(GameEvent.OnRivalHitUp);
+        if(isDown) EventManager.Broadcast(GameEvent.OnRivalHitDown);
+        if(isCenter) EventManager.Broadcast(GameEvent.OnRivalHitCenter);
     }
 
     internal override void StopAction(PlayerTrigger player)

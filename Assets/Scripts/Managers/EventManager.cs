@@ -28,6 +28,13 @@ public enum GameEvent
     OnPlayerRight,
     OnPlayerCenter,
 
+    //Rival Hit Directions
+    OnRivalHitUp,
+    OnRivalHitDown,
+    OnRivalHitLeft,
+    OnRivalHitRight,
+    OnRivalHitCenter,
+
     //Resets
     OnResetUp,
     OnResetDown,
@@ -72,26 +79,5 @@ public class EventManager
         if(eventTable[gameEvent]!=null)
             eventTable[gameEvent]();
     }
-
-
-    public static void AddIdHandler(GameEvent gameIdEvent,Action<int> actionId)
-    {
-        if(!IdEventTable.ContainsKey(gameIdEvent))
-            IdEventTable[gameIdEvent]=actionId;
-        else IdEventTable[gameIdEvent]+=actionId;
-    }
-
-    public static void RemoveIdHandler(GameEvent gameIdEvent,Action<int> actionId)
-    {
-        if(IdEventTable[gameIdEvent]!=null)
-            IdEventTable[gameIdEvent]-=actionId;
-        if(IdEventTable[gameIdEvent]==null)
-            IdEventTable.Remove(gameIdEvent);
-    }
-
-    public static void BroadcastId(GameEvent gameIdEvent,int id)
-    {
-        if(IdEventTable[gameIdEvent]!=null)
-            IdEventTable[gameIdEvent](id);
-    }
+    
 }
