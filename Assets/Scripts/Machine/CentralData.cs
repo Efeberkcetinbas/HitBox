@@ -16,6 +16,6 @@ public class CentralData : ScriptableObject
     public bool playerUpHit,playerDownHit,playerLeftHit,playerRightHit,playerCentralHit;
 
     //Check if player doesn't hit
-    public bool byHitUp,byHitDown,byHitLeft,byHitRight,byHitCenter;
+    //public bool byHitUp,byHitDown,byHitLeft,byHitRight,byHitCenter;
 
 }

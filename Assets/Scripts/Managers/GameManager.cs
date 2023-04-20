@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         FailPanel.SetActive(true);
         FailPanel.transform.DOScale(Vector3.one,1f).SetEase(ease);
         playerData.playerCanMove=false;
+        gameData.isGameEnd=true;
 
         if(gameData.score>gameData.highScore)
         {
@@ -95,12 +96,16 @@ public class GameManager : MonoBehaviour
         gameData.increaseScore=25;
         gameData.highScore=PlayerPrefs.GetInt("highscore");
         gameData.score = 0;
+        gameData.hitTime=0;
+        gameData.isGameEnd=false;
+        gameData.timeIsUp=false;
         playerData.playerCanMove=true;
         centralData.upHit=false;
         centralData.downHit=false;
         centralData.leftHit=false;
         centralData.rightHit=false;
         centralData.centralHit=false;
+
 
     }
 

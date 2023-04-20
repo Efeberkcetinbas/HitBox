@@ -143,42 +143,27 @@ public class PlayerControl : MonoBehaviour
     private void UpDirection()
     {
         DoPunch(up);
-        //leftPunch.DOLocalMove(up.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerUpHit=true;
-        centralData.byHitUp=true;
-        centralControl.StopCoroutine(centralControl.CheckIfUpHitByPunch());
     }
     private void DownDirection()
     {
         DoPunch(down);
-        //RightPunch.DOLocalMove(down.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerDownHit=true;
-        centralData.byHitDown=true;
-        centralControl.StopCoroutine(centralControl.CheckIfDownHitByPunch());
     }
     private void LeftDirection()
     {
         DoPunch(left);
-        //leftPunch.DOLocalMove(left.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerLeftHit=true;
-        centralData.byHitLeft=true;
-        centralControl.StopCoroutine(centralControl.CheckIfLeftHitByPunch());
     }
     private void RightDirection()
     {
         DoPunch(right);
-        //RightPunch.DOLocalMove(right.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerRightHit=true;
-        centralData.byHitRight=true;
-        centralControl.StopCoroutine(centralControl.CheckIfRightHitByPunch());
     }
     private void CentralDirection()
     {
         DoPunch(central);
-        //RightPunch.DOLocalMove(central.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.85f,-0.39f,-7.5f),0.1f));
         centralData.playerCentralHit=true;
-        centralData.byHitCenter=true;
-        centralControl.StopCoroutine(centralControl.CheckIfCenterHitByPunch());
     }
 
     private void OnTargetHit()
@@ -192,16 +177,10 @@ public class PlayerControl : MonoBehaviour
 
         if(isLeft)
         {
-            /*animator.SetBool("Punch2",true);
-            animator.SetBool("Punch1",false);
-            StartCoroutine(SetFalse(animator,"Punch2",false));*/
             leftPunch.DOMove(punch.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.0610569f,0.0910638f,0.0075707f),0.1f));
         }
         else
         {
-            /*animator.SetBool("Punch1",true);
-            animator.SetBool("Punch2",false);
-            StartCoroutine(SetFalse(animator,"Punch1",false));*/
             RightPunch.DOMove(punch.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.0610569f,0.0910638f,0.0075707f),0.1f));
         }
 

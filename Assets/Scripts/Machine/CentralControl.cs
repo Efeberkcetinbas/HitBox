@@ -5,6 +5,7 @@ using UnityEngine;
 public class CentralControl : MonoBehaviour
 {
     public CentralData centralData;
+    public GameData gameData;
 
     public List<Transform> Directions=new List<Transform>();
 
@@ -22,13 +23,27 @@ public class CentralControl : MonoBehaviour
 
     void Update()
     {
-        time+=Time.deltaTime;
-        if(time>centralData.changeSignalTime)
+        if(!gameData.isGameEnd)
         {
-            ChangeIndex();
-            ActiveDirection();
-            time=0;
+            time+=Time.deltaTime;
+            if(time>centralData.changeSignalTime)
+            {
+                ChangeIndex();
+                ActiveDirection();
+                time=0;
+            }
+
+            if(gameData.timeIsUp)
+            {
+                gameData.hitTime+=Time.deltaTime;
+                if(gameData.hitTime>centralData.reactionTime)
+                {
+                    Debug.Log("TIME IS UP BRO YOU LOST");
+                    EventManager.Broadcast(GameEvent.OnGameOver);
+                }
+            }
         }
+        
     }
 
 
@@ -76,91 +91,30 @@ public class CentralControl : MonoBehaviour
     private void ActiveUp()
     {
         EventManager.Broadcast(GameEvent.OnUp);
-        centralData.byHitUp=false;
-        //StartCoroutine(CheckIfUpHitByPunch());
     }
 
     private void ActiveDown()
     {
         EventManager.Broadcast(GameEvent.OnDown);
-        centralData.byHitDown=false;
-        StartCoroutine(CheckIfDownHitByPunch());
     }
 
     private void ActiveLeft()
     {
         EventManager.Broadcast(GameEvent.OnLeft);
-        centralData.byHitLeft=false;
-        StartCoroutine(CheckIfLeftHitByPunch());
     }
 
     private void ActiveRight()
     {
         EventManager.Broadcast(GameEvent.OnRight);
-        centralData.byHitRight=false;
-        StartCoroutine(CheckIfRightHitByPunch());
     }
 
     private void ActiveCentral()
     {
         EventManager.Broadcast(GameEvent.OnCenter);
-        centralData.byHitCenter=false;
-        StartCoroutine(CheckIfCenterHitByPunch());
     }
 
     
-    public IEnumerator CheckIfUpHitByPunch()
-    {
-        yield return new WaitForSeconds(centralData.reactionTime);
-        /*if(!centralData.byHitUp)
-        {
-            Debug.Log("TIME IS UP");
-            EventManager.Broadcast(GameEvent.OnGameOver);
-        }*/
-    }
-
-    public IEnumerator CheckIfDownHitByPunch()
-    {
-        yield return new WaitForSeconds(centralData.reactionTime);
-        /*if(!centralData.byHitDown)
-        {
-            Debug.Log("TIME IS UP");
-            EventManager.Broadcast(GameEvent.OnGameOver);
-        }*/
-    }
-
-    public IEnumerator CheckIfLeftHitByPunch()
-    {
-        yield return new WaitForSeconds(centralData.reactionTime);
-        /*if(!centralData.byHitLeft)
-        {
-            Debug.Log("TIME IS UP");
-            EventManager.Broadcast(GameEvent.OnGameOver);
-        }*/
-        
-    }
-
-    public IEnumerator CheckIfRightHitByPunch()
-    {
-        yield return new WaitForSeconds(centralData.reactionTime);
-        /*if(!centralData.byHitRight)
-        {
-            Debug.Log("TIME IS UP");
-            EventManager.Broadcast(GameEvent.OnGameOver);
-        }*/
-        
-    }
-
-    public IEnumerator CheckIfCenterHitByPunch()
-    {
-        yield return new WaitForSeconds(centralData.reactionTime);
-        /*if(!centralData.byHitCenter)
-        {
-            Debug.Log("TIME IS UP");
-            EventManager.Broadcast(GameEvent.OnGameOver);
-        }*/
-        
-    }
+   
 
     
 }

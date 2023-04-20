@@ -8,6 +8,11 @@ public class GameData : ScriptableObject
     public int highScore=0;
     public int increaseScore=25;
 
+    public float hitTime=0;
+
+    public bool timeIsUp=false;
+    public bool isGameEnd=false;
+
 
 
 }
