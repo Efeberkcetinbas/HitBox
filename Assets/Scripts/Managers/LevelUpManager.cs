@@ -8,9 +8,11 @@ public class LevelUpManager : MonoBehaviour
     public CentralData centralData;
     public int levelUpThreshold;
     public int scoreLevelUpThreshold;
+    public int roundLevelThreshold;
 
     private void Start() 
     {
+        IncreaseRound();
         InvokeRepeating("CheckScore",1,1);
     }
 
@@ -28,6 +30,18 @@ public class LevelUpManager : MonoBehaviour
             scoreLevelUpThreshold*=2;
         }
 
+        if(gameData.score>=roundLevelThreshold)
+        {
+            IncreaseRound();
+            roundLevelThreshold+=roundLevelThreshold;
+        }
+
+    }
+
+    private void IncreaseRound()
+    {
+        gameData.roundNumber+=1;
+        EventManager.Broadcast(GameEvent.OnNextRound);
     }
 
 

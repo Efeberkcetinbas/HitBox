@@ -31,7 +31,7 @@ public class CameraManager : MonoBehaviour
     void OnHit()
     {
         //ShakeIt();
-        //ChangeFieldOfView(40,0.5f);
+        ChangeFieldOfView(82,0.1f);
     }
 
     
@@ -40,6 +40,13 @@ public class CameraManager : MonoBehaviour
 
     
     public void ChangeFieldOfView(float fieldOfView, float duration = 1)
+    {
+        DOTween.To(() => cm.m_Lens.FieldOfView, x => cm.m_Lens.FieldOfView = x, fieldOfView, duration).OnComplete(()=>{
+            ResetFieldOfView(85,0.1f);
+        });
+    }
+
+    private void ResetFieldOfView(float fieldOfView, float duration = 1)
     {
         DOTween.To(() => cm.m_Lens.FieldOfView, x => cm.m_Lens.FieldOfView = x, fieldOfView, duration);
     }

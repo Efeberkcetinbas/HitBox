@@ -6,6 +6,7 @@ public class GameData : ScriptableObject
     public int coins = 0;
     public int score = 0;
     public int highScore=0;
+    public int roundNumber=0;
     public int increaseScore=25;
 
     public float hitTimeUp=0;

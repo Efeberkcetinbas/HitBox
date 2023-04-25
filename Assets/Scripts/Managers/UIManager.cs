@@ -6,6 +6,8 @@ using DG.Tweening;
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI score,highscore,endingScore;
+    public TextMeshProUGUI roundText,endingRoundText;
+    public RectTransform roundMenu;
 
 
     public GameData gameData;
@@ -15,11 +17,13 @@ public class UIManager : MonoBehaviour
     {
         EventManager.AddHandler(GameEvent.OnUpdateUI, OnUIUpdate);
         EventManager.AddHandler(GameEvent.OnUpdateGameOverUI,OnUIGameOver);
+        EventManager.AddHandler(GameEvent.OnNextRound,OnRoundUpdate);
     }
     private void OnDisable()
     {
         EventManager.RemoveHandler(GameEvent.OnUpdateUI, OnUIUpdate);
         EventManager.RemoveHandler(GameEvent.OnUpdateGameOverUI,OnUIGameOver);
+        EventManager.RemoveHandler(GameEvent.OnNextRound,OnRoundUpdate);
     }
 
     
@@ -34,6 +38,21 @@ public class UIManager : MonoBehaviour
     {
         score.SetText("");
         endingScore.SetText("Score : " + gameData.score.ToString());
+        endingRoundText.SetText("Round: " + gameData.roundNumber.ToString());
         highscore.SetText("High Score : " + gameData.highScore.ToString());
+    }
+
+    void OnRoundUpdate()
+    {
+        roundMenu.DOAnchorPos(new Vector3(150,-250,0),0.25f).OnComplete(()=>{
+            roundText.SetText("Round " + gameData.roundNumber.ToString());
+            StartCoroutine(GetBack());
+        });
+    }
+
+    private IEnumerator GetBack()
+    {
+        yield return new WaitForSeconds(2);
+        roundMenu.DOAnchorPos(new Vector3(-150,-250,0),0.25f);
     }
 }

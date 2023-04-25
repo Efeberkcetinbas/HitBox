@@ -12,6 +12,7 @@ public enum GameEvent
     OnUpdateGameOverUI,
     OnUpdateGameOverManager,
     OnGameOver,
+    OnNextRound,
 
 
     //Directions
