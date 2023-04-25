@@ -33,15 +33,63 @@ public class CentralControl : MonoBehaviour
                 time=0;
             }
 
+            #region TimerControl
             if(gameData.timeIsUp)
             {
-                gameData.hitTime+=Time.deltaTime;
-                if(gameData.hitTime>centralData.reactionTime)
+                gameData.hitTimeUp+=Time.deltaTime;
+                if(gameData.hitTimeUp>centralData.reactionTime)
                 {
+                    gameData.isGameEnd=true;
                     Debug.Log("TIME IS UP BRO YOU LOST");
                     EventManager.Broadcast(GameEvent.OnGameOver);
                 }
             }
+
+            if(gameData.timeIsDown)
+            {
+                gameData.hitTimeDown+=Time.deltaTime;
+                if(gameData.hitTimeDown>centralData.reactionTime)
+                {
+                    gameData.isGameEnd=true;
+                    Debug.Log("TIME IS UP BRO YOU LOST");
+                    EventManager.Broadcast(GameEvent.OnGameOver);
+                }
+            }
+
+            if(gameData.timeIsLeft)
+            {
+                gameData.hitTimeLeft+=Time.deltaTime;
+                if(gameData.hitTimeLeft>centralData.reactionTime)
+                {
+                    gameData.isGameEnd=true;
+                    Debug.Log("TIME IS UP BRO YOU LOST");
+                    EventManager.Broadcast(GameEvent.OnGameOver);
+                }
+            }
+
+            if(gameData.timeIsRight)
+            {
+                gameData.hitTimeRight+=Time.deltaTime;
+                if(gameData.hitTimeRight>centralData.reactionTime)
+                {
+                    gameData.isGameEnd=true;
+                    Debug.Log("TIME IS UP BRO YOU LOST");
+                    EventManager.Broadcast(GameEvent.OnGameOver);
+                }
+            }
+
+            if(gameData.timeIsCenter)
+            {
+                gameData.hitTimeCenter+=Time.deltaTime;
+                if(gameData.hitTimeCenter>centralData.reactionTime)
+                {
+                    gameData.isGameEnd=true;
+                    Debug.Log("TIME IS UP BRO YOU LOST");
+                    EventManager.Broadcast(GameEvent.OnGameOver);
+                }
+            }
+
+            #endregion
         }
         
     }

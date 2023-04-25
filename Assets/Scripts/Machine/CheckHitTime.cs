@@ -5,48 +5,93 @@ using DG.Tweening;
 public class CheckHitTime : MonoBehaviour
 {   
     public GameData gameData;
-
+    
     private void OnEnable() 
     {
-        EventManager.AddHandler(GameEvent.OnUp,CreateAnObject);
-        EventManager.AddHandler(GameEvent.OnDown,CreateAnObject);
-        EventManager.AddHandler(GameEvent.OnLeft,CreateAnObject);
-        EventManager.AddHandler(GameEvent.OnRight,CreateAnObject);
-        EventManager.AddHandler(GameEvent.OnCenter,CreateAnObject);
+        EventManager.AddHandler(GameEvent.OnUp,CreateUpObject);
+        EventManager.AddHandler(GameEvent.OnDown,CreateDownObject);
+        EventManager.AddHandler(GameEvent.OnLeft,CreateLeftObject);
+        EventManager.AddHandler(GameEvent.OnRight,CreateRightObject);
+        EventManager.AddHandler(GameEvent.OnCenter,CreateCenterObject);
 
-        EventManager.AddHandler(GameEvent.OnPlayerUp,DestroyAnObject);
-        EventManager.AddHandler(GameEvent.OnPlayerDown,DestroyAnObject);
-        EventManager.AddHandler(GameEvent.OnPlayerLeft,DestroyAnObject);
-        EventManager.AddHandler(GameEvent.OnPlayerRight,DestroyAnObject);
-        EventManager.AddHandler(GameEvent.OnPlayerCenter,DestroyAnObject);
+        EventManager.AddHandler(GameEvent.OnPlayerUp,DestroyUpObject);
+        EventManager.AddHandler(GameEvent.OnPlayerDown,DestroyDownObject);
+        EventManager.AddHandler(GameEvent.OnPlayerLeft,DestroyLeftObject);
+        EventManager.AddHandler(GameEvent.OnPlayerRight,DestroyRightObject);
+        EventManager.AddHandler(GameEvent.OnPlayerCenter,DestroyCenterObject);
         
     }
 
     private void OnDisable() 
     {
-        EventManager.RemoveHandler(GameEvent.OnUp,CreateAnObject);
-        EventManager.RemoveHandler(GameEvent.OnDown,CreateAnObject);
-        EventManager.RemoveHandler(GameEvent.OnLeft,CreateAnObject);
-        EventManager.RemoveHandler(GameEvent.OnRight,CreateAnObject);
-        EventManager.RemoveHandler(GameEvent.OnCenter,CreateAnObject);
+        EventManager.RemoveHandler(GameEvent.OnUp,CreateUpObject);
+        EventManager.RemoveHandler(GameEvent.OnDown,CreateDownObject);
+        EventManager.RemoveHandler(GameEvent.OnLeft,CreateLeftObject);
+        EventManager.RemoveHandler(GameEvent.OnRight,CreateRightObject);
+        EventManager.RemoveHandler(GameEvent.OnCenter,CreateCenterObject);
 
-        EventManager.RemoveHandler(GameEvent.OnPlayerUp,DestroyAnObject);
-        EventManager.RemoveHandler(GameEvent.OnPlayerDown,DestroyAnObject);
-        EventManager.RemoveHandler(GameEvent.OnPlayerLeft,DestroyAnObject);
-        EventManager.RemoveHandler(GameEvent.OnPlayerRight,DestroyAnObject);
-        EventManager.RemoveHandler(GameEvent.OnPlayerCenter,DestroyAnObject);
+        EventManager.RemoveHandler(GameEvent.OnPlayerUp,DestroyUpObject);
+        EventManager.RemoveHandler(GameEvent.OnPlayerDown,DestroyDownObject);
+        EventManager.RemoveHandler(GameEvent.OnPlayerLeft,DestroyLeftObject);
+        EventManager.RemoveHandler(GameEvent.OnPlayerRight,DestroyRightObject);
+        EventManager.RemoveHandler(GameEvent.OnPlayerCenter,DestroyCenterObject);
     }
 
-    void CreateAnObject()
+    void CreateUpObject()
     {
         gameData.timeIsUp=true;
+    }
+    void CreateDownObject()
+    {
+        gameData.timeIsDown=true;
     }  
 
-    void DestroyAnObject()
+    void CreateLeftObject()
+    {
+        gameData.timeIsLeft=true;
+    }  
+
+    void CreateRightObject()
+    {
+        gameData.timeIsRight=true;
+    }  
+
+    void CreateCenterObject()
+    {
+        gameData.timeIsCenter=true;
+    }    
+
+    void DestroyUpObject()
     {
         gameData.timeIsUp=false;
-        gameData.hitTime=0;
+        gameData.hitTimeUp=0;
     }
+
+    void DestroyDownObject()
+    {
+        gameData.timeIsDown=false;
+        gameData.hitTimeDown=0;
+    }
+
+    void DestroyLeftObject()
+    {
+        gameData.timeIsLeft=false;
+        gameData.hitTimeLeft=0;
+    }
+
+    void DestroyRightObject()
+    {
+        gameData.timeIsRight=false;
+        gameData.hitTimeRight=0;
+    }
+
+    void DestroyCenterObject()
+    {
+        gameData.timeIsCenter=false;
+        gameData.hitTimeCenter=0;
+    }
+
+
 
     
 }
