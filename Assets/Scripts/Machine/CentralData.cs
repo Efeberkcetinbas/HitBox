@@ -6,6 +6,7 @@ public class CentralData : ScriptableObject
     //Kademeli olarak azaltacak bir algoritma gerekli
     public float changeSignalTime;
 
+
     //fake red ' te vuramayiz
     public float reactionTime;
 

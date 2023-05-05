@@ -102,13 +102,13 @@ public class GameManager : MonoBehaviour
         gameData.hitTimeRight=0;
         gameData.hitTimeCenter=0;
         gameData.roundNumber=0;
-        gameData.isGameEnd=false;
+        gameData.isGameEnd=true;
         gameData.timeIsUp=false;
         gameData.timeIsDown=false;
         gameData.timeIsLeft=false;
         gameData.timeIsRight=false;
         gameData.timeIsCenter=false;
-        playerData.playerCanMove=true;
+        playerData.playerCanMove=false;
         centralData.upHit=false;
         centralData.downHit=false;
         centralData.leftHit=false;

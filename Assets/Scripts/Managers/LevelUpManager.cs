@@ -9,6 +9,7 @@ public class LevelUpManager : MonoBehaviour
     public int levelUpThreshold;
     public int scoreLevelUpThreshold;
     public int roundLevelThreshold;
+    public int shuffleLevelThreshold;
 
     private void Start() 
     {
@@ -36,6 +37,12 @@ public class LevelUpManager : MonoBehaviour
             roundLevelThreshold+=roundLevelThreshold;
         }
 
+        if(gameData.score>=shuffleLevelThreshold)
+        {
+            EventManager.Broadcast(GameEvent.OnShuffle);
+            shuffleLevelThreshold*=2;
+        }
+
     }
 
     private void IncreaseRound()
@@ -47,9 +54,9 @@ public class LevelUpManager : MonoBehaviour
 
     private void OnDecreaseReaction()
     {
-        if(centralData.changeSignalTime>0.25f)
+        if(centralData.changeSignalTime>0.4f)
         {
-            centralData.changeSignalTime-=0.25f;
+            centralData.changeSignalTime-=0.2f;
             //EventManager.Broadcast(GameEvent.OnDecreaseReactionTime);
             EventManager.Broadcast(GameEvent.OnShuffle);
         }
@@ -57,9 +64,11 @@ public class LevelUpManager : MonoBehaviour
 
     private void OnIncreaseScoreAmount()
     {
-        if(gameData.increaseScore<100)
+        if(gameData.increaseScore<200)
             gameData.increaseScore+=25;
     }
+
+    
 
     
 }
