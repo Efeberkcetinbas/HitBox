@@ -21,7 +21,6 @@ public class SandBagTrigger : Obstacable
 
     [SerializeField] private GameData gameData;
 
-    [SerializeField] private AudioClip hitSound;
 
     [SerializeField] private AudioManager audioManager;
 
@@ -38,7 +37,7 @@ public class SandBagTrigger : Obstacable
         transform.DOScale(oldScale/3f,duration);
         //audioManager.HitSound=hitSound;
         EventManager.Broadcast(GameEvent.OnTargetHit);
-        impulseSource.GenerateImpulse();
+        //impulseSource.GenerateImpulse();
         Instantiate(particleEffect,particlePos.position,Quaternion.identity);
         StartCoinMove(gameObject);
 

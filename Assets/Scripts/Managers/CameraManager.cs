@@ -15,6 +15,10 @@ public class CameraManager : MonoBehaviour
     [Header("Shake Control")]
     public float shakeMagnitude = 0.05f;
     public float shakeTime = 0.5f;
+    public float amplitudeGain=1;
+    public float frequencyGain=1;
+
+    private CinemachineBasicMultiChannelPerlin noise;
 
     private void OnEnable() 
     {
@@ -28,11 +32,36 @@ public class CameraManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnGameOver,GameOver);
     }
 
+    private void Start() 
+    {
+        noise=cm.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
+        if(noise == null)
+            Debug.LogError("No MultiChannelPerlin on the virtual camera.", this);
+        else
+            Debug.Log($"Noise Component: {noise}");
+    }
+
     void OnHit()
     {
         //ShakeIt();
+        Noise();
         ChangeFieldOfView(82,0.1f);
     }
+
+    private void Noise() 
+    {
+        noise.m_AmplitudeGain = amplitudeGain;
+        noise.m_FrequencyGain = frequencyGain;
+        StartCoroutine(ResetNoise(shakeTime));    
+    }
+
+    private IEnumerator ResetNoise(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        noise.m_AmplitudeGain = 0;
+        noise.m_FrequencyGain = 0;    
+    }
+
 
     
 
