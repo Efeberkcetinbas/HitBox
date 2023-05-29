@@ -32,11 +32,12 @@ public class AudioManager : MonoBehaviour
 
     void OnHit()
     {
-        hit=!hit;
+        /*hit=!hit;
         if(hit)
             effectSource.PlayOneShot(HitSound1);
         else
-            effectSource.PlayOneShot(HitSound2);
+            effectSource.PlayOneShot(HitSound2);*/
+        effectSource.PlayOneShot(HitSound2);
     }
 
     void OnGameOver()

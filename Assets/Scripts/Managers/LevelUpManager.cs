@@ -33,8 +33,8 @@ public class LevelUpManager : MonoBehaviour
 
         if(gameData.score>=roundLevelThreshold)
         {
+            roundLevelThreshold*=2;
             IncreaseRound();
-            roundLevelThreshold+=roundLevelThreshold;
         }
 
         if(gameData.score>=shuffleLevelThreshold)

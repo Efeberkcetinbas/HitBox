@@ -14,29 +14,32 @@ public class DifficultySelection : MonoBehaviour
 
     public void SelectEasyOption()
     {
-        MovePanel();
-        levelUpManager.levelUpThreshold=3200;
-        levelUpManager.scoreLevelUpThreshold=200;
-        levelUpManager.roundLevelThreshold=3200;
-        levelUpManager.shuffleLevelThreshold=600;
+        //3200,200,3200,600
+        Options(levelUpManager,3200,200,3200,600);
+        EventManager.Broadcast(GameEvent.OnNextRound);
     }
 
     public void SelectNormalOption()
     {
-        MovePanel();
-        levelUpManager.levelUpThreshold=400;
-        levelUpManager.scoreLevelUpThreshold=800;
-        levelUpManager.roundLevelThreshold=400;
-        levelUpManager.shuffleLevelThreshold=200;
+        //400,800,400,200
+        Options(levelUpManager,400,800,400,200);
+        EventManager.Broadcast(GameEvent.OnNextRound);
     }
 
     public void SelectHardOption()
     {
+        //100,400,100,200
+        Options(levelUpManager,100,400,100,200);
+        EventManager.Broadcast(GameEvent.OnNextRound);
+    }
+
+    private void Options(LevelUpManager levelUpManager,int levelUpThreshold,int scoreLevelUpThreshold,int roundLevelThreshold,int shuffleLevelThreshold)
+    {
         MovePanel();
-        levelUpManager.levelUpThreshold=100;
-        levelUpManager.scoreLevelUpThreshold=400;
-        levelUpManager.roundLevelThreshold=100;
-        levelUpManager.shuffleLevelThreshold=200;
+        levelUpManager.levelUpThreshold=levelUpThreshold;
+        levelUpManager.scoreLevelUpThreshold=scoreLevelUpThreshold;
+        levelUpManager.roundLevelThreshold=roundLevelThreshold;
+        levelUpManager.shuffleLevelThreshold=shuffleLevelThreshold;
     }
 
     private void MovePanel()
