@@ -12,13 +12,11 @@ public class CheckHitTime : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnDown,CreateDownObject);
         EventManager.AddHandler(GameEvent.OnLeft,CreateLeftObject);
         EventManager.AddHandler(GameEvent.OnRight,CreateRightObject);
-        EventManager.AddHandler(GameEvent.OnCenter,CreateCenterObject);
 
         EventManager.AddHandler(GameEvent.OnPlayerUp,DestroyUpObject);
         EventManager.AddHandler(GameEvent.OnPlayerDown,DestroyDownObject);
         EventManager.AddHandler(GameEvent.OnPlayerLeft,DestroyLeftObject);
         EventManager.AddHandler(GameEvent.OnPlayerRight,DestroyRightObject);
-        EventManager.AddHandler(GameEvent.OnPlayerCenter,DestroyCenterObject);
         
     }
 
@@ -28,13 +26,11 @@ public class CheckHitTime : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnDown,CreateDownObject);
         EventManager.RemoveHandler(GameEvent.OnLeft,CreateLeftObject);
         EventManager.RemoveHandler(GameEvent.OnRight,CreateRightObject);
-        EventManager.RemoveHandler(GameEvent.OnCenter,CreateCenterObject);
 
         EventManager.RemoveHandler(GameEvent.OnPlayerUp,DestroyUpObject);
         EventManager.RemoveHandler(GameEvent.OnPlayerDown,DestroyDownObject);
         EventManager.RemoveHandler(GameEvent.OnPlayerLeft,DestroyLeftObject);
         EventManager.RemoveHandler(GameEvent.OnPlayerRight,DestroyRightObject);
-        EventManager.RemoveHandler(GameEvent.OnPlayerCenter,DestroyCenterObject);
     }
 
     void CreateUpObject()
@@ -56,11 +52,7 @@ public class CheckHitTime : MonoBehaviour
         gameData.timeIsRight=true;
     }  
 
-    void CreateCenterObject()
-    {
-        gameData.timeIsCenter=true;
-    }    
-
+   
     void DestroyUpObject()
     {
         gameData.timeIsUp=false;
@@ -85,11 +77,7 @@ public class CheckHitTime : MonoBehaviour
         gameData.hitTimeRight=0;
     }
 
-    void DestroyCenterObject()
-    {
-        gameData.timeIsCenter=false;
-        gameData.hitTimeCenter=0;
-    }
+    
 
 
 

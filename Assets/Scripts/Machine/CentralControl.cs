@@ -128,10 +128,6 @@ public class CentralControl : MonoBehaviour
             case 3:
                 ActiveRight();
                 break;
-            case 4:
-                ActiveCentral();
-                break;
-
         }
 
     }
@@ -156,11 +152,7 @@ public class CentralControl : MonoBehaviour
         EventManager.Broadcast(GameEvent.OnRight);
     }
 
-    private void ActiveCentral()
-    {
-        EventManager.Broadcast(GameEvent.OnCenter);
-    }
-
+   
     
    
 

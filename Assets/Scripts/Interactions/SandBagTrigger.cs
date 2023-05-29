@@ -15,16 +15,15 @@ public class SandBagTrigger : Obstacable
     [SerializeField] private Transform particlePos;
     [SerializeField] private Transform pointPos;
 
-    [SerializeField] private CinemachineImpulseSource impulseSource;
 
     [SerializeField] private GameObject increaseScorePrefab;
 
     [SerializeField] private GameData gameData;
 
 
-    [SerializeField] private AudioManager audioManager;
 
-    [SerializeField] private bool isLeft,isRight,isUp,isDown,isCenter;
+    [SerializeField] private bool isLeft,isRight,isUp,isDown;
+    
 
 
     private void Start() 
@@ -34,22 +33,23 @@ public class SandBagTrigger : Obstacable
     internal override void DoAction(PlayerTrigger player)
     {
         transform.DOLocalMoveZ(z,duration);
+        //transform.DOLocalRotate();
         transform.DOScale(oldScale/3f,duration);
-        //audioManager.HitSound=hitSound;
         EventManager.Broadcast(GameEvent.OnTargetHit);
-        //impulseSource.GenerateImpulse();
         Instantiate(particleEffect,particlePos.position,Quaternion.identity);
         StartCoinMove(gameObject);
+
+
 
         if(isLeft) EventManager.Broadcast(GameEvent.OnRivalHitLeft);
         if(isRight) EventManager.Broadcast(GameEvent.OnRivalHitRight);
         if(isUp) EventManager.Broadcast(GameEvent.OnRivalHitUp);
         if(isDown) EventManager.Broadcast(GameEvent.OnRivalHitDown);
-        if(isCenter) EventManager.Broadcast(GameEvent.OnRivalHitCenter);
     }
 
     internal override void StopAction(PlayerTrigger player)
     {
+        Debug.Log("OUT");
         transform.DOScale(oldScale,duration);
         transform.DOLocalMoveZ(old_z,duration);
     }

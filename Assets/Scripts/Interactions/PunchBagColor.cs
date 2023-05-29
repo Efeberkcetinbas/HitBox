@@ -13,13 +13,11 @@ public class PunchBagColor : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnDown,ChangeDownMat);
         EventManager.AddHandler(GameEvent.OnLeft,ChangeLeftMat);
         EventManager.AddHandler(GameEvent.OnRight,ChangeRightMat);
-        EventManager.AddHandler(GameEvent.OnCenter,ChangeCentralMat);
 
         EventManager.AddHandler(GameEvent.OnResetUp,ResetUpMat);
         EventManager.AddHandler(GameEvent.OnResetDown,ResetDownMat);
         EventManager.AddHandler(GameEvent.OnResetLeft,ResetLeftMat);
         EventManager.AddHandler(GameEvent.OnResetRight,ResetRightMat);
-        EventManager.AddHandler(GameEvent.OnResetCenter,ResetCenterMat);
     }
 
     private void OnDisable() 
@@ -28,13 +26,11 @@ public class PunchBagColor : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnDown,ChangeDownMat);
         EventManager.RemoveHandler(GameEvent.OnLeft,ChangeLeftMat);
         EventManager.RemoveHandler(GameEvent.OnRight,ChangeRightMat);
-        EventManager.RemoveHandler(GameEvent.OnCenter,ChangeCentralMat);
 
         EventManager.RemoveHandler(GameEvent.OnResetUp,ResetUpMat);
         EventManager.RemoveHandler(GameEvent.OnResetDown,ResetDownMat);
         EventManager.RemoveHandler(GameEvent.OnResetLeft,ResetLeftMat);
         EventManager.RemoveHandler(GameEvent.OnResetRight,ResetRightMat);
-        EventManager.RemoveHandler(GameEvent.OnResetCenter,ResetCenterMat);
     }
 
     
@@ -59,10 +55,7 @@ public class PunchBagColor : MonoBehaviour
         directions[3].GetComponent<MeshRenderer>().material=Green;
     }
 
-    private void ChangeCentralMat()
-    {
-        directions[4].GetComponent<MeshRenderer>().material=Green;
-    }
+    
 
     private void ResetUpMat()
     {
@@ -84,8 +77,5 @@ public class PunchBagColor : MonoBehaviour
         directions[3].GetComponent<MeshRenderer>().material=Red;
     }
 
-    private void ResetCenterMat()
-    {
-        directions[4].GetComponent<MeshRenderer>().material=Red;
-    }
+    
 }

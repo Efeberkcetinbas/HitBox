@@ -24,7 +24,7 @@ public class PlayerControl : MonoBehaviour
 
 
     [SerializeField] private Transform leftPunch,RightPunch;
-    [SerializeField] private Transform up,down,left,right,central;
+    [SerializeField] private Transform up,down,left,right;
 
     private void OnEnable() 
     {
@@ -32,7 +32,6 @@ public class PlayerControl : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnResetDown,ResetDownDirection);
         EventManager.AddHandler(GameEvent.OnResetLeft,ResetLeftDirection);
         EventManager.AddHandler(GameEvent.OnResetRight,ResetRightDirection);
-        EventManager.AddHandler(GameEvent.OnResetCenter,ResetCenterDirection);
 
         EventManager.AddHandler(GameEvent.OnTargetHit,OnTargetHit);    
     }
@@ -43,7 +42,6 @@ public class PlayerControl : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnResetDown,ResetDownDirection);
         EventManager.RemoveHandler(GameEvent.OnResetLeft,ResetLeftDirection);
         EventManager.RemoveHandler(GameEvent.OnResetRight,ResetRightDirection);
-        EventManager.RemoveHandler(GameEvent.OnResetCenter,ResetCenterDirection);   
 
         EventManager.RemoveHandler(GameEvent.OnTargetHit,OnTargetHit);
     }
@@ -112,9 +110,8 @@ public class PlayerControl : MonoBehaviour
                     
                     else if(lastPosition.x==firstPosition.x && lastPosition.y==firstPosition.y)
                     {
-                        CentralDirection();
                         //playerData.playerCanMove=false;
-                        EventManager.Broadcast(GameEvent.OnPlayerCenter);
+                        //Center
                     }
                     else 
                     {
@@ -160,12 +157,7 @@ public class PlayerControl : MonoBehaviour
         DoPunch(right);
         centralData.playerRightHit=true;
     }
-    private void CentralDirection()
-    {
-        DoPunch(central);
-        centralData.playerCentralHit=true;
-    }
-
+   
     private void OnTargetHit()
     {
         if(isLeft) leftGlove.DOScale(new Vector3(0.6f,0.6f,0.6f),0.2f).OnComplete(()=>leftGlove.DOScale(new Vector3(0.4f,0.4f,0.4f),0.2f));
@@ -177,11 +169,17 @@ public class PlayerControl : MonoBehaviour
 
         if(isLeft)
         {
-            leftPunch.DOMove(punch.transform.position,0.1f).OnComplete(()=>leftPunch.DOLocalMove(new Vector3(-0.0610569f,0.0910638f,0.0075707f),0.1f));
+            leftGlove.DOLookAt(punch.transform.position,0.1f);
+            leftPunch.DOMove(punch.transform.position,0.1f).OnComplete(()=>{
+                leftPunch.DOLocalMove(new Vector3(-0.0610569f,0.0910638f,0.0075707f),0.1f);
+            });
         }
         else
         {
-            RightPunch.DOMove(punch.transform.position,0.1f).OnComplete(()=>RightPunch.DOLocalMove(new Vector3(0.0610569f,0.0910638f,0.0075707f),0.1f));
+            rightGlove.DOLookAt(punch.transform.position,0.1f);
+            RightPunch.DOMove(punch.transform.position,0.1f).OnComplete(()=>{
+                RightPunch.DOLocalMove(new Vector3(0.0610569f,0.0910638f,0.0075707f),0.1f);
+            });
         }
 
     }
@@ -213,10 +211,7 @@ public class PlayerControl : MonoBehaviour
         centralData.playerRightHit=false;
     }
 
-    private void ResetCenterDirection()
-    {
-        centralData.playerCentralHit=false;
-    }
+    
 
     #endregion
 

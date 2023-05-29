@@ -20,28 +20,24 @@ public enum GameEvent
     OnDown,
     OnLeft,
     OnRight,
-    OnCenter,
 
     //Player Directions
     OnPlayerUp,
     OnPlayerDown,
     OnPlayerLeft,
     OnPlayerRight,
-    OnPlayerCenter,
 
     //Rival Hit Directions
     OnRivalHitUp,
     OnRivalHitDown,
     OnRivalHitLeft,
     OnRivalHitRight,
-    OnRivalHitCenter,
 
     //Resets
     OnResetUp,
     OnResetDown,
     OnResetLeft,
     OnResetRight,
-    OnResetCenter,
 
     //Buffs
     OnSpeedUp,

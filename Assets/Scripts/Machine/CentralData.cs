@@ -11,10 +11,10 @@ public class CentralData : ScriptableObject
     public float reactionTime;
 
     //order directions
-    public bool upHit,downHit,leftHit,rightHit,centralHit;
+    public bool upHit,downHit,leftHit,rightHit;
 
     //player hit direction and order direction match
-    public bool playerUpHit,playerDownHit,playerLeftHit,playerRightHit,playerCentralHit;
+    public bool playerUpHit,playerDownHit,playerLeftHit,playerRightHit;
 
     //Check if player doesn't hit
     //public bool byHitUp,byHitDown,byHitLeft,byHitRight,byHitCenter;

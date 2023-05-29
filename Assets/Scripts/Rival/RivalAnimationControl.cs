@@ -10,7 +10,6 @@ public class RivalAnimationControl : MonoBehaviour
 
     private void OnEnable() 
     {
-        EventManager.AddHandler(GameEvent.OnRivalHitCenter,OnRivalHitCenter);
         EventManager.AddHandler(GameEvent.OnRivalHitRight,OnRivalHitRight);
         EventManager.AddHandler(GameEvent.OnRivalHitLeft,OnRivalHitLeft);
         EventManager.AddHandler(GameEvent.OnRivalHitUp,OnRivalHitUp);
@@ -19,18 +18,13 @@ public class RivalAnimationControl : MonoBehaviour
 
     private void OnDisable() 
     {
-        EventManager.RemoveHandler(GameEvent.OnRivalHitCenter,OnRivalHitCenter);
         EventManager.RemoveHandler(GameEvent.OnRivalHitRight,OnRivalHitRight);
         EventManager.RemoveHandler(GameEvent.OnRivalHitLeft,OnRivalHitLeft);
         EventManager.RemoveHandler(GameEvent.OnRivalHitUp,OnRivalHitUp);
         EventManager.RemoveHandler(GameEvent.OnRivalHitDown,OnRivalHitDown);
     }
 
-    void OnRivalHitCenter()
-    {
-        listOfFalseAnimations.Clear();
-        SetAnimationBool(animator,"isCenter");
-    }
+   
 
     void OnRivalHitLeft()
     {
@@ -63,7 +57,6 @@ public class RivalAnimationControl : MonoBehaviour
         listOfFalseAnimations.Add("isDown");
         listOfFalseAnimations.Add("isRight");
         listOfFalseAnimations.Add("isLeft");
-        listOfFalseAnimations.Add("isCenter");
 
         for (int i = 0; i < listOfFalseAnimations.Count; i++)
         {

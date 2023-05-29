@@ -12,7 +12,6 @@ public class Check : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnPlayerDown,CheckingDown);
         EventManager.AddHandler(GameEvent.OnPlayerLeft,CheckingLeft);
         EventManager.AddHandler(GameEvent.OnPlayerRight,CheckingRight);
-        EventManager.AddHandler(GameEvent.OnPlayerCenter,CheckingCentral);
     }
 
     private void OnDisable() 
@@ -21,7 +20,6 @@ public class Check : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnPlayerDown,CheckingDown);
         EventManager.RemoveHandler(GameEvent.OnPlayerLeft,CheckingLeft);
         EventManager.RemoveHandler(GameEvent.OnPlayerRight,CheckingRight);
-        EventManager.RemoveHandler(GameEvent.OnPlayerCenter,CheckingCentral);
     }
 
     private void CheckingUp()
@@ -76,27 +74,5 @@ public class Check : MonoBehaviour
             EventManager.Broadcast(GameEvent.OnGameOver);
         
     }
-
-     private void CheckingCentral()
-    {
-        if(centralData.centralHit && centralData.playerCentralHit)
-        {
-            EventManager.Broadcast(GameEvent.OnIncreaseScore);
-            EventManager.Broadcast(GameEvent.OnResetCenter);
-            playerData.playerCanMove=true;
-        }
-        else
-            EventManager.Broadcast(GameEvent.OnGameOver);
-        
-    }
-
-
-    /*private IEnumerator DoReset()
-    {
-        //Bu sureleri ortak bir surede tut. Ayri ayri karisir. Time Management gameData icinde
-        yield return new WaitForSeconds(0.5f);
-        playerData.playerCanMove=true;
-        EventManager.Broadcast(GameEvent.OnResetAll);
-    }*/
 
 }

@@ -59,8 +59,7 @@ public class GameManager : MonoBehaviour
 
     void OnIncreaseScore()
     {
-        //gameData.score += 50;
-        DOTween.To(GetScore,ChangeScore,gameData.score+gameData.increaseScore,1f).OnUpdate(UpdateUI);
+        DOTween.To(GetScore,ChangeScore,gameData.score+gameData.increaseScore,.25f).OnUpdate(UpdateUI);
         CheckScore();
     }
 
@@ -113,7 +112,6 @@ public class GameManager : MonoBehaviour
         centralData.downHit=false;
         centralData.leftHit=false;
         centralData.rightHit=false;
-        centralData.centralHit=false;
 
 
     }
