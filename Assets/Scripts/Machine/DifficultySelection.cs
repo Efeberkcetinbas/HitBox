@@ -36,6 +36,7 @@ public class DifficultySelection : MonoBehaviour
     private void Options(LevelUpManager levelUpManager,int levelUpThreshold,int scoreLevelUpThreshold,int roundLevelThreshold,int shuffleLevelThreshold)
     {
         MovePanel();
+        EventManager.Broadcast(GameEvent.OnButtonPressed);
         levelUpManager.levelUpThreshold=levelUpThreshold;
         levelUpManager.scoreLevelUpThreshold=scoreLevelUpThreshold;
         levelUpManager.roundLevelThreshold=roundLevelThreshold;
@@ -44,7 +45,8 @@ public class DifficultySelection : MonoBehaviour
 
     private void MovePanel()
     {
-        difficultyPanel.DOAnchorPos(new Vector2(0,-2500f),0.25f).OnComplete(()=>{
+        difficultyPanel.DOAnchorPos(new Vector2(0,-2500f),1f).OnComplete(()=>{
+            EventManager.Broadcast(GameEvent.OnPanelChange);
             difficultyPanel.gameObject.SetActive(false);
             StartCoroutine(StartGame());
         });

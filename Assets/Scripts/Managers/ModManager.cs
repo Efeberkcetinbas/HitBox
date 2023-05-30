@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class ModManager : MonoBehaviour
 {
@@ -9,33 +10,61 @@ public class ModManager : MonoBehaviour
     public PlayerData playerData;
     public ModData modData;
     
-    [SerializeField] private GameObject MainMenu;
-    [SerializeField] private GameObject ChallengerMenu;
-    [SerializeField] private GameObject LevelMenu;
+    
+    [SerializeField] private RectTransform MainMenu;
+    [SerializeField] private RectTransform ChallengerMenu;
+    [SerializeField] private RectTransform LevelMenu;
 
+    [SerializeField] private GameObject ChallengerMod;
+    [SerializeField] private GameObject LevelMod;
+
+    [Header("Anchor")]
+    [SerializeField] private float x;
+    [SerializeField] private float y;
+    [SerializeField] private float challengeX;
+    [SerializeField] private float challengeY;
+    [SerializeField] private float levelX;
+    [SerializeField] private float levelY;
     public void SelectChallengerMod()
     {
-        MainMenu.transform.DOScale(Vector3.zero,0.5f).OnComplete(()=>{
-            Selection(true,false);
+        EventManager.Broadcast(GameEvent.OnPanelChange);
+        MainMenu.DOAnchorPos(new Vector2(x,y),1f).OnComplete(()=>{
+            //ChallengerMenu.gameObject.SetActive(true);
+            //Selection(true,false); 
+            ChallengerMenu.DOAnchorPos(new Vector2(challengeX,challengeY),1f).OnComplete(()=>{
+                ChallengerMod.SetActive(true);
+            });
+            
         });
         
     }
 
     public void SelectLevelMod()
     {
-        MainMenu.transform.DOScale(Vector3.zero,0.5f).OnComplete(()=>{
-            Selection(false,true);
+        EventManager.Broadcast(GameEvent.OnPanelChange);
+        MainMenu.DOAnchorPos(new Vector2(x,y),1f).OnComplete(()=>{
+            //Selection(false,true);
+            LevelMenu.DOAnchorPos(new Vector2(challengeX,challengeY),1f).OnComplete(()=>{
+                Common();
+            });
         });
+        
     }
 
     private void Selection(bool challenge,bool level)
     {
-        MainMenu.SetActive(false);
-        gameData.isGameEnd=false;
-        playerData.playerCanMove=true;
+        //MainMenu.gameObject.SetActive(false);
         modData.ChallengeMod=challenge;
         modData.LevelMod=level;
-        ChallengerMenu.SetActive(challenge);
-        LevelMenu.SetActive(level);
+        LevelMod.SetActive(level);
+        ChallengerMod.SetActive(challenge);
+        //ChallengerMenu.gameObject.SetActive(challenge);
+        //LevelMenu.gameObject.SetActive(level);
+    }
+
+    private void Common()
+    {
+        gameData.isGameEnd=false;
+        playerData.playerCanMove=true;
     }
 }

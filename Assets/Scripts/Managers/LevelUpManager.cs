@@ -13,7 +13,7 @@ public class LevelUpManager : MonoBehaviour
 
     private void Start() 
     {
-        IncreaseRound();
+        //IncreaseRound();
         InvokeRepeating("CheckScore",1,1);
     }
 

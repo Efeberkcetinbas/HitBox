@@ -43,6 +43,10 @@ public enum GameEvent
     OnEnemyHit,
     OnEnemyDead,
 
+    //UI Sound
+    OnButtonPressed,
+    OnPanelChange,
+
     //Level Up
     OnShuffle,
     OnDecreaseReactionTime
