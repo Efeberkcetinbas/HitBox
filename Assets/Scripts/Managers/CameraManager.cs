@@ -24,12 +24,14 @@ public class CameraManager : MonoBehaviour
     {
         EventManager.AddHandler(GameEvent.OnTargetHit,OnHit);
         EventManager.AddHandler(GameEvent.OnGameOver,GameOver);
+        EventManager.AddHandler(GameEvent.OnEnemyHit,OnEnemyHit);
     }
 
     private void OnDisable()
     {
         EventManager.RemoveHandler(GameEvent.OnTargetHit,OnHit);
         EventManager.RemoveHandler(GameEvent.OnGameOver,GameOver);
+        EventManager.RemoveHandler(GameEvent.OnEnemyHit,OnEnemyHit);
     }
 
     private void Start() 
@@ -46,6 +48,11 @@ public class CameraManager : MonoBehaviour
         //ShakeIt();
         Noise();
         ChangeFieldOfView(82,0.1f);
+    }
+
+    void OnEnemyHit()
+    {
+        Noise();
     }
 
     private void Noise() 

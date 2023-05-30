@@ -19,6 +19,7 @@ public class SandBagTrigger : Obstacable
     [SerializeField] private GameObject increaseScorePrefab;
 
     [SerializeField] private GameData gameData;
+    [SerializeField] private ModData modData;
 
 
 
@@ -40,11 +41,14 @@ public class SandBagTrigger : Obstacable
         StartCoinMove(gameObject);
 
 
-
-        if(isLeft) EventManager.Broadcast(GameEvent.OnRivalHitLeft);
-        if(isRight) EventManager.Broadcast(GameEvent.OnRivalHitRight);
-        if(isUp) EventManager.Broadcast(GameEvent.OnRivalHitUp);
-        if(isDown) EventManager.Broadcast(GameEvent.OnRivalHitDown);
+        if(modData.ChallengeMod)
+        {
+            if(isLeft) EventManager.Broadcast(GameEvent.OnRivalHitLeft);
+            if(isRight) EventManager.Broadcast(GameEvent.OnRivalHitRight);
+            if(isUp) EventManager.Broadcast(GameEvent.OnRivalHitUp);
+            if(isDown) EventManager.Broadcast(GameEvent.OnRivalHitDown);
+        }
+        
     }
 
     internal override void StopAction(PlayerTrigger player)

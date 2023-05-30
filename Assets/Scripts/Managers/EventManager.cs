@@ -39,8 +39,8 @@ public enum GameEvent
     OnResetLeft,
     OnResetRight,
 
-    //Buffs
-    OnSpeedUp,
+    //Enemy
+    OnEnemyHit,
 
     //Level Up
     OnShuffle,

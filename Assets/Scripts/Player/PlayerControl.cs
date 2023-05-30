@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
 
     public PlayerData playerData;
     public CentralData centralData;
+    public ModData modData;
 
     private CentralControl centralControl;
 
@@ -87,13 +88,15 @@ public class PlayerControl : MonoBehaviour
                         //animator.SetBool("Jump",true);
                         RightDirection();
                         //playerData.playerCanMove=false;
-                        EventManager.Broadcast(GameEvent.OnPlayerRight);
+                        if(modData.ChallengeMod)
+                            EventManager.Broadcast(GameEvent.OnPlayerRight);
                     }
                     else
                     {
                         LeftDirection();
                         //playerData.playerCanMove=false;
-                        EventManager.Broadcast(GameEvent.OnPlayerLeft);
+                        if(modData.ChallengeMod)
+                            EventManager.Broadcast(GameEvent.OnPlayerLeft);
                         //animator.SetBool("Jump",true);
                     }
                 }
@@ -104,7 +107,8 @@ public class PlayerControl : MonoBehaviour
                     {
                         UpDirection();
                         //playerData.playerCanMove=false;
-                        EventManager.Broadcast(GameEvent.OnPlayerUp);
+                        if(modData.ChallengeMod)
+                            EventManager.Broadcast(GameEvent.OnPlayerUp);
                         //animator.SetBool("Jump",true);
                     }
                     
@@ -117,7 +121,8 @@ public class PlayerControl : MonoBehaviour
                     {
                         DownDirection();
                         //playerData.playerCanMove=false;
-                        EventManager.Broadcast(GameEvent.OnPlayerDown);
+                        if(modData.ChallengeMod)
+                            EventManager.Broadcast(GameEvent.OnPlayerDown);
                         //animator.SetBool("Jump",true);
                         // ?????????????? SORUN VARRRR
                     }
