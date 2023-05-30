@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
         gameData.timeIsLeft=false;
         gameData.timeIsRight=false;
         gameData.timeIsCenter=false;
-        playerData.playerCanMove=false;
+        //playerData.playerCanMove=false;
         centralData.upHit=false;
         centralData.downHit=false;
         centralData.leftHit=false;
