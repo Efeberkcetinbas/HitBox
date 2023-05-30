@@ -41,6 +41,7 @@ public enum GameEvent
 
     //Enemy
     OnEnemyHit,
+    OnEnemyDead,
 
     //Level Up
     OnShuffle,
