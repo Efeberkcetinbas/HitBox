@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coins: 0
   score: 25
-  highScore: 17275
-  roundNumber: 1
+  highScore: 0
+  roundNumber: 0
   increaseScore: 25
   hitTimeUp: 0
   hitTimeDown: 0
-  hitTimeLeft: 1.3863424
+  hitTimeLeft: 0
   hitTimeRight: 0
   hitTimeCenter: 0
   timeIsUp: 0
   timeIsDown: 0
-  timeIsLeft: 1
+  timeIsLeft: 0
   timeIsRight: 0
   timeIsCenter: 0
   isGameEnd: 0

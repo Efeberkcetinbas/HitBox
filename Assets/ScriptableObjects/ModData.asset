@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d446c8ab52c7c94285974ed31de322f, type: 3}
   m_Name: ModData
   m_EditorClassIdentifier: 
-  ChallengeMod: 0
-  LevelMod: 1
+  ChallengeMod: 1
+  LevelMod: 0

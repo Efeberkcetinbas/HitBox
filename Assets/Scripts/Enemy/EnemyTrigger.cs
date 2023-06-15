@@ -31,7 +31,7 @@ public class EnemyTrigger : Obstacable
                 animator.enabled=false;
                 SetRigidbodyState(false);
                 SetColliderState(true);
-                EventManager.Broadcast(GameEvent.OnEnemyDead);
+                //EventManager.Broadcast(GameEvent.OnEnemyDead);
                 //Havai fisek kutlama filan.
                 //Bar sistemi eklenecek. Saglik olayi.
             });
