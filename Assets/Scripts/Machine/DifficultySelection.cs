@@ -12,24 +12,24 @@ public class DifficultySelection : MonoBehaviour
     public GameData gameData;
     public PlayerData playerData;
 
-    public void SelectEasyOption()
-    {
-        //3200,200,3200,600
-        Options(levelUpManager,3200,200,3200,600);
-        EventManager.Broadcast(GameEvent.OnNextRound);
-    }
-
     public void SelectNormalOption()
     {
-        //400,800,400,200
+        //3200,200,3200,600
         Options(levelUpManager,400,800,400,200);
         EventManager.Broadcast(GameEvent.OnNextRound);
     }
 
     public void SelectHardOption()
     {
-        //100,400,100,200
+        //400,800,400,200
         Options(levelUpManager,100,400,100,200);
+        EventManager.Broadcast(GameEvent.OnNextRound);
+    }
+
+    public void SelectWorldClassOption()
+    {
+        //100,400,100,200
+        Options(levelUpManager,100,200,100,50);
         EventManager.Broadcast(GameEvent.OnNextRound);
     }
 

@@ -13,7 +13,6 @@ public class PlayerControl : MonoBehaviour
 
     public PlayerData playerData;
     public CentralData centralData;
-    public ModData modData;
 
     private CentralControl centralControl;
 
@@ -25,7 +24,7 @@ public class PlayerControl : MonoBehaviour
 
 
     [SerializeField] private Transform leftPunch,RightPunch;
-    [SerializeField] private Transform up,down,left,right;
+    [SerializeField] private Transform up,down,left,right,center;
 
     private void OnEnable() 
     {
@@ -88,15 +87,13 @@ public class PlayerControl : MonoBehaviour
                         //animator.SetBool("Jump",true);
                         RightDirection();
                         //playerData.playerCanMove=false;
-                        if(modData.ChallengeMod)
-                            EventManager.Broadcast(GameEvent.OnPlayerRight);
+                        EventManager.Broadcast(GameEvent.OnPlayerRight);
                     }
                     else
                     {
                         LeftDirection();
                         //playerData.playerCanMove=false;
-                        if(modData.ChallengeMod)
-                            EventManager.Broadcast(GameEvent.OnPlayerLeft);
+                        EventManager.Broadcast(GameEvent.OnPlayerLeft);
                         //animator.SetBool("Jump",true);
                     }
                 }
@@ -107,8 +104,7 @@ public class PlayerControl : MonoBehaviour
                     {
                         UpDirection();
                         //playerData.playerCanMove=false;
-                        if(modData.ChallengeMod)
-                            EventManager.Broadcast(GameEvent.OnPlayerUp);
+                        EventManager.Broadcast(GameEvent.OnPlayerUp);
                         //animator.SetBool("Jump",true);
                     }
                     
@@ -116,13 +112,13 @@ public class PlayerControl : MonoBehaviour
                     {
                         //playerData.playerCanMove=false;
                         //Center
+                        CenterDirection();
                     }
                     else 
                     {
                         DownDirection();
                         //playerData.playerCanMove=false;
-                        if(modData.ChallengeMod)
-                            EventManager.Broadcast(GameEvent.OnPlayerDown);
+                        EventManager.Broadcast(GameEvent.OnPlayerDown);
                         //animator.SetBool("Jump",true);
                         // ?????????????? SORUN VARRRR
                     }
@@ -161,6 +157,11 @@ public class PlayerControl : MonoBehaviour
     {
         DoPunch(right);
         centralData.playerRightHit=true;
+    }
+
+    private void CenterDirection()
+    {
+        DoPunch(center);
     }
    
     private void OnTargetHit()

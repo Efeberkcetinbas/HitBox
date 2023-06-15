@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   coins: 0
-  score: 25
-  highScore: 0
+  score: 0
+  highScore: 25
   roundNumber: 0
   increaseScore: 25
   hitTimeUp: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
   hitTimeCenter: 0
   timeIsUp: 0
   timeIsDown: 0
-  timeIsLeft: 0
+  timeIsLeft: 1
   timeIsRight: 0
   timeIsCenter: 0
-  isGameEnd: 0
+  isGameEnd: 1

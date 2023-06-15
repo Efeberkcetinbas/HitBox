@@ -19,7 +19,6 @@ public class SandBagTrigger : Obstacable
     [SerializeField] private GameObject increaseScorePrefab;
 
     [SerializeField] private GameData gameData;
-    [SerializeField] private ModData modData;
 
 
 
@@ -40,14 +39,11 @@ public class SandBagTrigger : Obstacable
         Instantiate(particleEffect,particlePos.position,Quaternion.identity);
         StartCoinMove(gameObject);
 
+        if(isLeft) EventManager.Broadcast(GameEvent.OnRivalHitLeft);
+        if(isRight) EventManager.Broadcast(GameEvent.OnRivalHitRight);
+        if(isUp) EventManager.Broadcast(GameEvent.OnRivalHitUp);
+        if(isDown) EventManager.Broadcast(GameEvent.OnRivalHitDown);
 
-        if(modData.ChallengeMod)
-        {
-            if(isLeft) EventManager.Broadcast(GameEvent.OnRivalHitLeft);
-            if(isRight) EventManager.Broadcast(GameEvent.OnRivalHitRight);
-            if(isUp) EventManager.Broadcast(GameEvent.OnRivalHitUp);
-            if(isDown) EventManager.Broadcast(GameEvent.OnRivalHitDown);
-        }
         
     }
 
